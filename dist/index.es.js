@@ -1,6 +1,7 @@
+import { attachField } from 'react-forms';
+import React, { useState, useEffect } from 'react';
 import { TextField, InputAdornment, IconButton, ListItemText, createStyles } from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import React, { useState, useEffect } from 'react';
 import Clear from '@material-ui/icons/Clear';
 import SearchIcon from '@material-ui/icons/Search';
 
@@ -5646,7 +5647,6 @@ var GoogleUtils = {
     }
 };
 
-// import { createStyles, ListItemText, TextField, Theme, InputAdornment, IconButton } from '@material-ui/core';
 var GoogleLocationSuggest = function (props) {
     var classes = useStyles();
     var _a = useState(''), input = _a[0], setInput = _a[1];
@@ -5698,10 +5698,10 @@ var GoogleLocationSuggest = function (props) {
                                 React.createElement(SearchIcon, { fontSize: 'small' })))) }), placeholder: 'Search on google', variant: 'standard' }, textFieldProps));
             }, renderOption: function (item) { return (React.createElement(ListItemText, { onClick: function () { return handleResultClick(item); } }, item.description)); } })));
 };
-var useStyles = makeStyles(function (theme) {
+var useStyles = makeStyles(function () {
     return (createStyles({
         popper: {
-            zIndex: theme.zIndex.modal + 1
+        // zIndex: theme.zIndex.modal + 1
         },
         endIcon: {
             cursor: 'pointer'
@@ -5709,8 +5709,11 @@ var useStyles = makeStyles(function (theme) {
     }));
 });
 
+// @ts-ignore
+attachField('GoogleLocationSuggest', React.createElement(GoogleLocationSuggest, null));
+
 var index$1 = './lib';
 
 export default index$1;
-export { GoogleLocationSuggest };
+export { GoogleLocationSuggest, GoogleUtils };
 //# sourceMappingURL=index.es.js.map

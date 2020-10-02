@@ -1,8 +1,9 @@
-// import {attachField} from 'react-forms'
-// import React from 'react'
-// import {GoogleLocationSuggest} from './GoogleLocationSuggest'
+import { attachField} from 'react-forms';
+import React from 'react';
+import {GoogleLocationSuggest} from './GoogleLocationSuggest'
 export {GoogleLocationSuggest} from './GoogleLocationSuggest'
-import '@date-io/date-fns'
+export {TGooglePlaceSuggestCategories,TPosition,GoogleUtils} from './google'
 
-// attachField('GoogleLocationSuggest', <GoogleLocationSuggest />)
+// @ts-ignore
+attachField('GoogleLocationSuggest', <GoogleLocationSuggest />);
 

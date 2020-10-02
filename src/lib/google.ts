@@ -15,7 +15,7 @@ export interface TPosition {
     lng: number
 }
 
-const GoogleUtils = {
+export const GoogleUtils = {
 
 
     geoAddressFields: ['street_number', 'route', 'postal_code', 'country', 'administrative_area_level_1', 'administrative_area_level_2', 'locality', 'sublocality_level_1', 'sublocality_level_2', 'route', 'street_number', 'opening_hours', 'price_level'],
@@ -133,5 +133,3 @@ const GoogleUtils = {
         return { periods }
     }
 }
-
-export default GoogleUtils;

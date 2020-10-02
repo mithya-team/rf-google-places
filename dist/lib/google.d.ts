@@ -13,7 +13,7 @@ export interface TPosition {
     lat: number;
     lng: number;
 }
-declare const GoogleUtils: {
+export declare const GoogleUtils: {
     geoAddressFields: string[];
     placeSuggest: (input: string, types: TGooglePlaceSuggestCategories[]) => Promise<unknown>;
     placeDetails: (placeId: string) => Promise<google.maps.places.PlaceResult>;
@@ -33,4 +33,3 @@ declare const GoogleUtils: {
         periods: any[];
     } | undefined;
 };
-export default GoogleUtils;

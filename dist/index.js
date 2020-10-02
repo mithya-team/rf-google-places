@@ -4,10 +4,11 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
-var core = require('@material-ui/core');
-var Autocomplete = _interopDefault(require('@material-ui/lab/Autocomplete'));
+var reactForms = require('react-forms');
 var React = require('react');
 var React__default = _interopDefault(React);
+var core = require('@material-ui/core');
+var Autocomplete = _interopDefault(require('@material-ui/lab/Autocomplete'));
 var Clear = _interopDefault(require('@material-ui/icons/Clear'));
 var SearchIcon = _interopDefault(require('@material-ui/icons/Search'));
 
@@ -5653,7 +5654,6 @@ var GoogleUtils = {
     }
 };
 
-// import { createStyles, ListItemText, TextField, Theme, InputAdornment, IconButton } from '@material-ui/core';
 var GoogleLocationSuggest = function (props) {
     var classes = useStyles();
     var _a = React.useState(''), input = _a[0], setInput = _a[1];
@@ -5705,10 +5705,10 @@ var GoogleLocationSuggest = function (props) {
                                 React__default.createElement(SearchIcon, { fontSize: 'small' })))) }), placeholder: 'Search on google', variant: 'standard' }, textFieldProps));
             }, renderOption: function (item) { return (React__default.createElement(core.ListItemText, { onClick: function () { return handleResultClick(item); } }, item.description)); } })));
 };
-var useStyles = makeStyles(function (theme) {
+var useStyles = makeStyles(function () {
     return (core.createStyles({
         popper: {
-            zIndex: theme.zIndex.modal + 1
+        // zIndex: theme.zIndex.modal + 1
         },
         endIcon: {
             cursor: 'pointer'
@@ -5716,8 +5716,12 @@ var useStyles = makeStyles(function (theme) {
     }));
 });
 
+// @ts-ignore
+reactForms.attachField('GoogleLocationSuggest', React__default.createElement(GoogleLocationSuggest, null));
+
 var index$1 = './lib';
 
 exports.GoogleLocationSuggest = GoogleLocationSuggest;
+exports.GoogleUtils = GoogleUtils;
 exports.default = index$1;
 //# sourceMappingURL=index.js.map
