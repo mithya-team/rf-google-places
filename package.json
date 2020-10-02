@@ -19,7 +19,6 @@
     "react-forms": "https://github.com/mithyalabs/ml-react-forms.git"
   },
   "devDependencies": {
-    "@date-io/core": "^2.10.6",
     "@material-ui/core": "^4.10.1",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.40",
