@@ -1,2 +1,2 @@
-export { GoogleLocationSuggest } from './GoogleLocationSuggest';
-export { TGooglePlaceSuggestCategories, TPosition, GoogleUtils } from './google';
+export * from './GoogleLocationSuggest';
+export * from './google';
