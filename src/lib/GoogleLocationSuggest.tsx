@@ -12,8 +12,13 @@ export type GoogleLocationSuggestProps = TextFieldProps & {
     suggestionsTypes: TGooglePlaceSuggestCategories[]
 }
 
-export const GoogleLocationSuggest: FC<GoogleLocationSuggestProps> = (props) => {
+export interface GoogleLocationProps {
+	fieldProps: GoogleLocationSuggestProps
+}
+
+export const GoogleLocationSuggest: FC<GoogleLocationProps> = (props) => {
     const classes = useStyles();
+    const { fieldProps } = props
     const [input, setInput] = useState('');
     const [result, setResult] = useState<any[]>([]);
     const [open, setOpen] = useState<boolean>(false);
@@ -23,6 +28,11 @@ export const GoogleLocationSuggest: FC<GoogleLocationSuggestProps> = (props) => 
         setInput(e.target.value);
         // anchorEl || setAnchorEl(e.currentTarget);
     };
+    const {
+        onResultClick,
+        suggestionsTypes,
+        ...textFieldProps
+	} = fieldProps
 
     const clearInput = () => {
         if (open)
@@ -31,7 +41,7 @@ export const GoogleLocationSuggest: FC<GoogleLocationSuggestProps> = (props) => 
         setResult([]);
     }
     const getSuggestions = async () => {
-        const res = await GoogleUtils.placeSuggest(input, props.suggestionsTypes) as any[];
+        const res = await GoogleUtils.placeSuggest(input, suggestionsTypes) as any[];
         if (res) setResult(res);
     }
 
@@ -42,11 +52,9 @@ export const GoogleLocationSuggest: FC<GoogleLocationSuggestProps> = (props) => 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [input]);
 
-    const { onResultClick, suggestionsTypes, ...textFieldProps } = props;
-
     const handleResultClick = (item: any) => {
         setInput(item.description)
-        typeof props.onResultClick === 'function' && props.onResultClick(item);
+        typeof onResultClick === 'function' && onResultClick(item);
         setOpen(false);
     }
     return (

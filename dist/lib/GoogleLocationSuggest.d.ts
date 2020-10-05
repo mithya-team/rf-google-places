@@ -5,4 +5,7 @@ export declare type GoogleLocationSuggestProps = TextFieldProps & {
     onResultClick: (result: any) => void;
     suggestionsTypes: TGooglePlaceSuggestCategories[];
 };
-export declare const GoogleLocationSuggest: FC<GoogleLocationSuggestProps>;
+export interface GoogleLocationProps {
+    fieldProps: GoogleLocationSuggestProps;
+}
+export declare const GoogleLocationSuggest: FC<GoogleLocationProps>;

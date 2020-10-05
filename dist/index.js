@@ -5656,6 +5656,7 @@ var GoogleUtils = {
 
 var GoogleLocationSuggest = function (props) {
     var classes = useStyles();
+    var fieldProps = props.fieldProps;
     var _a = React.useState(''), input = _a[0], setInput = _a[1];
     var _b = React.useState([]), result = _b[0], setResult = _b[1];
     var _c = React.useState(false), open = _c[0], setOpen = _c[1];
@@ -5665,6 +5666,7 @@ var GoogleLocationSuggest = function (props) {
         setInput(e.target.value);
         // anchorEl || setAnchorEl(e.currentTarget);
     };
+    var onResultClick = fieldProps.onResultClick, suggestionsTypes = fieldProps.suggestionsTypes, textFieldProps = __rest(fieldProps, ["onResultClick", "suggestionsTypes"]);
     var clearInput = function () {
         if (open)
             setOpen(false);
@@ -5675,7 +5677,7 @@ var GoogleLocationSuggest = function (props) {
         var res;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, GoogleUtils.placeSuggest(input, props.suggestionsTypes)];
+                case 0: return [4 /*yield*/, GoogleUtils.placeSuggest(input, suggestionsTypes)];
                 case 1:
                     res = _a.sent();
                     if (res)
@@ -5690,10 +5692,9 @@ var GoogleLocationSuggest = function (props) {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [input]);
-    var onResultClick = props.onResultClick, suggestionsTypes = props.suggestionsTypes, textFieldProps = __rest(props, ["onResultClick", "suggestionsTypes"]);
     var handleResultClick = function (item) {
         setInput(item.description);
-        typeof props.onResultClick === 'function' && props.onResultClick(item);
+        typeof onResultClick === 'function' && onResultClick(item);
         setOpen(false);
     };
     return (React__default.createElement(React__default.Fragment, null,
