@@ -1,15 +1,17 @@
 import { createStyles, ListItemText, TextField, Theme, InputAdornment, IconButton } from '@material-ui/core';
 import { TextFieldProps } from '@material-ui/core/TextField';
-import Autocomplete from '@material-ui/lab/Autocomplete';
+import Autocomplete, { } from '@material-ui/lab/Autocomplete';
 import { makeStyles } from '@material-ui/styles';
 import React, { FC, useEffect, useState } from 'react';
 import { GoogleUtils, TGooglePlaceSuggestCategories } from './google';
 import Clear from '@material-ui/icons/Clear';
 import SearchIcon from '@material-ui/icons/Search';
 
+
 export type GoogleLocationSuggestProps = TextFieldProps & {
     onResultClick: (result: any) => void
     suggestionsTypes: TGooglePlaceSuggestCategories[]
+
 }
 
 export interface GoogleLocationProps {
@@ -18,7 +20,7 @@ export interface GoogleLocationProps {
 
 export const GoogleLocationSuggest: FC<GoogleLocationProps> = (props) => {
     const classes = useStyles();
-    const { fieldProps } = props
+    const { fieldProps, } = props
     const [input, setInput] = useState('');
     const [result, setResult] = useState<any[]>([]);
     const [open, setOpen] = useState<boolean>(false);
@@ -57,6 +59,7 @@ export const GoogleLocationSuggest: FC<GoogleLocationProps> = (props) => {
         typeof onResultClick === 'function' && onResultClick(item);
         setOpen(false);
     }
+    const { inputProps, InputProps, ...restProps } = textFieldProps;
     return (
         <>
             <Autocomplete
@@ -71,12 +74,14 @@ export const GoogleLocationSuggest: FC<GoogleLocationProps> = (props) => {
                 forcePopupIcon={false}
                 disableClearable
                 getOptionSelected={(option) => option.description}
+
                 renderInput={(params) =>
                     <TextField
                         {...params}
                         inputProps={{
                             ...params.inputProps,
                             onChange: handleInputChange, value: input || '',
+                            ...inputProps
                         }}
                         InputProps={{
 
@@ -95,10 +100,11 @@ export const GoogleLocationSuggest: FC<GoogleLocationProps> = (props) => {
                                 </InputAdornment>
                             ),
                             ...params.InputProps,
+                            ...InputProps
                         }}
                         placeholder='Search on google'
                         variant='standard'
-                        {...textFieldProps}
+                        {...restProps}
                     />
                 }
                 renderOption={(item) => (<ListItemText onClick={() => handleResultClick(item)}>{item.description}</ListItemText>)}
