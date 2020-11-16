@@ -3,7 +3,7 @@ import { TextFieldProps } from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { makeStyles } from '@material-ui/styles';
 import React, { FC, useEffect, useState } from 'react';
-import  {GoogleUtils, TGooglePlaceSuggestCategories } from './google';
+import { GoogleUtils, TGooglePlaceSuggestCategories } from './google';
 import Clear from '@material-ui/icons/Clear';
 import SearchIcon from '@material-ui/icons/Search';
 
@@ -13,7 +13,7 @@ export type GoogleLocationSuggestProps = TextFieldProps & {
 }
 
 export interface GoogleLocationProps {
-	fieldProps: GoogleLocationSuggestProps
+    fieldProps: GoogleLocationSuggestProps
 }
 
 export const GoogleLocationSuggest: FC<GoogleLocationProps> = (props) => {
@@ -32,7 +32,7 @@ export const GoogleLocationSuggest: FC<GoogleLocationProps> = (props) => {
         onResultClick,
         suggestionsTypes,
         ...textFieldProps
-	} = fieldProps
+    } = fieldProps
 
     const clearInput = () => {
         if (open)
@@ -79,7 +79,7 @@ export const GoogleLocationSuggest: FC<GoogleLocationProps> = (props) => {
                             onChange: handleInputChange, value: input || '',
                         }}
                         InputProps={{
-                            ...params.InputProps,
+
                             endAdornment: (
                                 <InputAdornment position={'end'} >
                                     <IconButton onClick={clearInput} >
@@ -93,7 +93,8 @@ export const GoogleLocationSuggest: FC<GoogleLocationProps> = (props) => {
                                         <SearchIcon fontSize='small' />
                                     </IconButton>
                                 </InputAdornment>
-                            )
+                            ),
+                            ...params.InputProps,
                         }}
                         placeholder='Search on google'
                         variant='standard'

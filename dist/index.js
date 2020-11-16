@@ -5699,11 +5699,11 @@ var GoogleLocationSuggest = function (props) {
     };
     return (React__default.createElement(React__default.Fragment, null,
         React__default.createElement(Autocomplete, { getOptionLabel: function (option) { return option.description; }, classes: { popper: classes.popper }, filterOptions: function (x) { return x; }, options: result, includeInputInList: true, fullWidth: textFieldProps.fullWidth, autoComplete: true, open: open && (input.length > 0), forcePopupIcon: false, disableClearable: true, getOptionSelected: function (option) { return option.description; }, renderInput: function (params) {
-                return React__default.createElement(core.TextField, __assign({}, params, { inputProps: __assign(__assign({}, params.inputProps), { onChange: handleInputChange, value: input || '' }), InputProps: __assign(__assign({}, params.InputProps), { endAdornment: (React__default.createElement(core.InputAdornment, { position: 'end' },
+                return React__default.createElement(core.TextField, __assign({}, params, { inputProps: __assign(__assign({}, params.inputProps), { onChange: handleInputChange, value: input || '' }), InputProps: __assign({ endAdornment: (React__default.createElement(core.InputAdornment, { position: 'end' },
                             React__default.createElement(core.IconButton, { onClick: clearInput },
                                 React__default.createElement(Clear, { fontSize: 'small', className: classes.endIcon })))), startAdornment: (React__default.createElement(core.InputAdornment, { position: 'start' },
                             React__default.createElement(core.IconButton, { disableRipple: true, disableFocusRipple: true, disableTouchRipple: true },
-                                React__default.createElement(SearchIcon, { fontSize: 'small' })))) }), placeholder: 'Search on google', variant: 'standard' }, textFieldProps));
+                                React__default.createElement(SearchIcon, { fontSize: 'small' })))) }, params.InputProps), placeholder: 'Search on google', variant: 'standard' }, textFieldProps));
             }, renderOption: function (item) { return (React__default.createElement(core.ListItemText, { onClick: function () { return handleResultClick(item); } }, item.description)); } })));
 };
 var useStyles = makeStyles(function () {
