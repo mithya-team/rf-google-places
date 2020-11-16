@@ -11,7 +11,7 @@ import SearchIcon from '@material-ui/icons/Search';
 export type GoogleLocationSuggestProps = TextFieldProps & {
     onResultClick: (result: any) => void
     suggestionsTypes: TGooglePlaceSuggestCategories[]
-
+    value?: any
 }
 
 export interface GoogleLocationProps {
@@ -33,6 +33,7 @@ export const GoogleLocationSuggest: FC<GoogleLocationProps> = (props) => {
     const {
         onResultClick,
         suggestionsTypes,
+        value,
         ...textFieldProps
     } = fieldProps
 
@@ -59,7 +60,6 @@ export const GoogleLocationSuggest: FC<GoogleLocationProps> = (props) => {
         typeof onResultClick === 'function' && onResultClick(item);
         setOpen(false);
     }
-    const { inputProps, InputProps, ...restProps } = textFieldProps;
     return (
         <>
             <Autocomplete
@@ -74,17 +74,16 @@ export const GoogleLocationSuggest: FC<GoogleLocationProps> = (props) => {
                 forcePopupIcon={false}
                 disableClearable
                 getOptionSelected={(option) => option.description}
-
+                value={value || null}
                 renderInput={(params) =>
                     <TextField
                         {...params}
                         inputProps={{
                             ...params.inputProps,
                             onChange: handleInputChange, value: input || '',
-                            ...inputProps
+                            // ...inputProps
                         }}
                         InputProps={{
-
                             endAdornment: (
                                 <InputAdornment position={'end'} >
                                     <IconButton onClick={clearInput} >
@@ -100,11 +99,11 @@ export const GoogleLocationSuggest: FC<GoogleLocationProps> = (props) => {
                                 </InputAdornment>
                             ),
                             ...params.InputProps,
-                            ...InputProps
+                            ...textFieldProps.InputProps
                         }}
                         placeholder='Search on google'
                         variant='standard'
-                        {...restProps}
+                        {...textFieldProps}
                     />
                 }
                 renderOption={(item) => (<ListItemText onClick={() => handleResultClick(item)}>{item.description}</ListItemText>)}

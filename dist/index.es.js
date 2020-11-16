@@ -5659,7 +5659,7 @@ var GoogleLocationSuggest = function (props) {
         setInput(e.target.value);
         // anchorEl || setAnchorEl(e.currentTarget);
     };
-    var onResultClick = fieldProps.onResultClick, suggestionsTypes = fieldProps.suggestionsTypes, textFieldProps = __rest(fieldProps, ["onResultClick", "suggestionsTypes"]);
+    var onResultClick = fieldProps.onResultClick, suggestionsTypes = fieldProps.suggestionsTypes, value = fieldProps.value, textFieldProps = __rest(fieldProps, ["onResultClick", "suggestionsTypes", "value"]);
     var clearInput = function () {
         if (open)
             setOpen(false);
@@ -5690,14 +5690,13 @@ var GoogleLocationSuggest = function (props) {
         typeof onResultClick === 'function' && onResultClick(item);
         setOpen(false);
     };
-    var inputProps = textFieldProps.inputProps, InputProps = textFieldProps.InputProps, restProps = __rest(textFieldProps, ["inputProps", "InputProps"]);
     return (React.createElement(React.Fragment, null,
-        React.createElement(Autocomplete, { getOptionLabel: function (option) { return option.description; }, classes: { popper: classes.popper }, filterOptions: function (x) { return x; }, options: result, includeInputInList: true, fullWidth: textFieldProps.fullWidth, autoComplete: true, open: open && (input.length > 0), forcePopupIcon: false, disableClearable: true, getOptionSelected: function (option) { return option.description; }, renderInput: function (params) {
-                return React.createElement(TextField, __assign({}, params, { inputProps: __assign(__assign(__assign({}, params.inputProps), { onChange: handleInputChange, value: input || '' }), inputProps), InputProps: __assign(__assign({ endAdornment: (React.createElement(InputAdornment, { position: 'end' },
+        React.createElement(Autocomplete, { getOptionLabel: function (option) { return option.description; }, classes: { popper: classes.popper }, filterOptions: function (x) { return x; }, options: result, includeInputInList: true, fullWidth: textFieldProps.fullWidth, autoComplete: true, open: open && (input.length > 0), forcePopupIcon: false, disableClearable: true, getOptionSelected: function (option) { return option.description; }, value: value || null, renderInput: function (params) {
+                return React.createElement(TextField, __assign({}, params, { inputProps: __assign(__assign({}, params.inputProps), { onChange: handleInputChange, value: input || '' }), InputProps: __assign(__assign({ endAdornment: (React.createElement(InputAdornment, { position: 'end' },
                             React.createElement(IconButton, { onClick: clearInput },
                                 React.createElement(Clear, { fontSize: 'small', className: classes.endIcon })))), startAdornment: (React.createElement(InputAdornment, { position: 'start' },
                             React.createElement(IconButton, { disableRipple: true, disableFocusRipple: true, disableTouchRipple: true },
-                                React.createElement(SearchIcon, { fontSize: 'small' })))) }, params.InputProps), InputProps), placeholder: 'Search on google', variant: 'standard' }, restProps));
+                                React.createElement(SearchIcon, { fontSize: 'small' })))) }, params.InputProps), textFieldProps.InputProps), placeholder: 'Search on google', variant: 'standard' }, textFieldProps));
             }, renderOption: function (item) { return (React.createElement(ListItemText, { onClick: function () { return handleResultClick(item); } }, item.description)); } })));
 };
 var useStyles = makeStyles(function () {

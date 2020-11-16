@@ -4,6 +4,7 @@ import { TGooglePlaceSuggestCategories } from './google';
 export declare type GoogleLocationSuggestProps = TextFieldProps & {
     onResultClick: (result: any) => void;
     suggestionsTypes: TGooglePlaceSuggestCategories[];
+    value?: any;
 };
 export interface GoogleLocationProps {
     fieldProps: GoogleLocationSuggestProps;
