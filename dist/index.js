@@ -5596,7 +5596,7 @@ var GoogleUtils = {
     },
     transformAddress: function (place) {
         if (!place)
-            return;
+            throw new Error("Cannot find place");
         var addressComponents = place.address_components || [];
         var geoAddress = {};
         GoogleUtils.geoAddressFields.forEach(function (addressField) {
@@ -5606,13 +5606,13 @@ var GoogleUtils = {
             });
         });
         var shAddress = {
-            placeid: place.place_id,
-            "full_address": place.formatted_address,
+            placeId: place.place_id,
+            "fullAddress": place.formatted_address || '',
             "address1": [geoAddress.administrative_area_level_1, geoAddress.route, geoAddress.sublocality_level_2].join(', '),
             "state": geoAddress.administrative_area_level_1,
             "city": geoAddress.locality,
             "locality": geoAddress.sublocality_level_1,
-            "zipcode": geoAddress.postal_code,
+            "zipCode": geoAddress.postal_code,
             "country": geoAddress.country
         };
         return shAddress;
@@ -5656,7 +5656,7 @@ var GoogleUtils = {
 
 var GoogleLocationSuggest = function (props) {
     var classes = useStyles();
-    var fieldProps = props.fieldProps;
+    var fieldProps = props.fieldProps, formikProps = props.formikProps, fieldConfig = props.fieldConfig;
     var _a = React.useState(''), input = _a[0], setInput = _a[1];
     var _b = React.useState([]), result = _b[0], setResult = _b[1];
     var _c = React.useState(false), open = _c[0], setOpen = _c[1];
@@ -5666,7 +5666,7 @@ var GoogleLocationSuggest = function (props) {
         setInput(e.target.value);
         // anchorEl || setAnchorEl(e.currentTarget);
     };
-    var onResultClick = fieldProps.onResultClick, suggestionsTypes = fieldProps.suggestionsTypes, value = fieldProps.value, textFieldProps = __rest(fieldProps, ["onResultClick", "suggestionsTypes", "value"]);
+    var onResultClick = fieldProps.onResultClick, suggestionsTypes = fieldProps.suggestionsTypes, value = fieldProps.value, _d = fieldProps.responseParser, responseParser = _d === void 0 ? function (res) { return res; } : _d, textFieldProps = __rest(fieldProps, ["onResultClick", "suggestionsTypes", "value", "responseParser"]);
     var clearInput = function () {
         if (open)
             setOpen(false);
@@ -5692,11 +5692,29 @@ var GoogleLocationSuggest = function (props) {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [input]);
-    var handleResultClick = function (item) {
-        setInput(item.description);
-        typeof onResultClick === 'function' && onResultClick(item);
-        setOpen(false);
-    };
+    var handleResultClick = function (item) { return __awaiter(void 0, void 0, void 0, function () {
+        var response, _a;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0:
+                    setInput(item.description);
+                    if (!fieldProps.detailedResponse) return [3 /*break*/, 2];
+                    return [4 /*yield*/, GoogleUtils.placeDetails(item.placeid)];
+                case 1:
+                    _a = _b.sent();
+                    return [3 /*break*/, 3];
+                case 2:
+                    _a = item;
+                    _b.label = 3;
+                case 3:
+                    response = _a;
+                    onResultClick === null || onResultClick === void 0 ? void 0 : onResultClick(response);
+                    formikProps === null || formikProps === void 0 ? void 0 : formikProps.setFieldValue(fieldConfig === null || fieldConfig === void 0 ? void 0 : fieldConfig.valueKey, responseParser(response));
+                    setOpen(false);
+                    return [2 /*return*/];
+            }
+        });
+    }); };
     return (React__default.createElement(React__default.Fragment, null,
         React__default.createElement(Autocomplete, { getOptionLabel: function (option) { return option.description; }, classes: { popper: classes.popper }, filterOptions: function (x) { return x; }, options: result, includeInputInList: true, fullWidth: textFieldProps.fullWidth, autoComplete: true, open: open && (input.length > 0), forcePopupIcon: false, disableClearable: true, getOptionSelected: function (option) { return option.description; }, value: value || null, renderInput: function (params) {
                 return React__default.createElement(core.TextField, __assign({}, params, { inputProps: __assign(__assign({}, params.inputProps), { onChange: handleInputChange, value: input || '' }), InputProps: __assign(__assign({ endAdornment: (React__default.createElement(core.InputAdornment, { position: 'end' },
