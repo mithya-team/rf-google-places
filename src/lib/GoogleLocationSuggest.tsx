@@ -54,6 +54,7 @@ export const GoogleLocationSuggest: FC<GoogleLocationProps> = (props) => {
         onResultClick,
         suggestionsTypes,
         value,
+        detailedResponse = false,
         responseParser = res => res,
         ...textFieldProps
     } = fieldProps
@@ -78,7 +79,7 @@ export const GoogleLocationSuggest: FC<GoogleLocationProps> = (props) => {
 
     const handleResultClick = async (item: any) => {
         setInput(item.description);
-        const response = fieldProps.detailedResponse ? await GoogleUtils.placeDetails(item.placeid) : item;
+        const response = fieldProps.detailedResponse ? await GoogleUtils.placeDetails(item.place_id) : item;
         onResultClick?.(response);
         formikProps?.setFieldValue(fieldConfig?.valueKey!, responseParser(response))
         setOpen(false);

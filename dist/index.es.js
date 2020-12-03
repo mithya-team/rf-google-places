@@ -5659,7 +5659,7 @@ var GoogleLocationSuggest = function (props) {
         setInput(e.target.value);
         // anchorEl || setAnchorEl(e.currentTarget);
     };
-    var onResultClick = fieldProps.onResultClick, suggestionsTypes = fieldProps.suggestionsTypes, value = fieldProps.value, _d = fieldProps.responseParser, responseParser = _d === void 0 ? function (res) { return res; } : _d, textFieldProps = __rest(fieldProps, ["onResultClick", "suggestionsTypes", "value", "responseParser"]);
+    var onResultClick = fieldProps.onResultClick, suggestionsTypes = fieldProps.suggestionsTypes, value = fieldProps.value, _d = fieldProps.detailedResponse, _e = fieldProps.responseParser, responseParser = _e === void 0 ? function (res) { return res; } : _e, textFieldProps = __rest(fieldProps, ["onResultClick", "suggestionsTypes", "value", "detailedResponse", "responseParser"]);
     var clearInput = function () {
         if (open)
             setOpen(false);
@@ -5692,7 +5692,7 @@ var GoogleLocationSuggest = function (props) {
                 case 0:
                     setInput(item.description);
                     if (!fieldProps.detailedResponse) return [3 /*break*/, 2];
-                    return [4 /*yield*/, GoogleUtils.placeDetails(item.placeid)];
+                    return [4 /*yield*/, GoogleUtils.placeDetails(item.place_id)];
                 case 1:
                     _a = _b.sent();
                     return [3 /*break*/, 3];
