@@ -5693,19 +5693,20 @@ var GoogleLocationSuggest = function (props) {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [input]);
     var handleResultClick = function (item) { return __awaiter(void 0, void 0, void 0, function () {
-        var response, _a;
-        return __generator(this, function (_b) {
-            switch (_b.label) {
+        var response, _a, _b, _c;
+        return __generator(this, function (_d) {
+            switch (_d.label) {
                 case 0:
                     setInput(item.description);
                     if (!fieldProps.detailedResponse) return [3 /*break*/, 2];
+                    _c = (_b = GoogleUtils).transformAddress;
                     return [4 /*yield*/, GoogleUtils.placeDetails(item.place_id)];
                 case 1:
-                    _a = _b.sent();
+                    _a = _c.apply(_b, [_d.sent()]);
                     return [3 /*break*/, 3];
                 case 2:
                     _a = item;
-                    _b.label = 3;
+                    _d.label = 3;
                 case 3:
                     response = _a;
                     onResultClick === null || onResultClick === void 0 ? void 0 : onResultClick(response);
