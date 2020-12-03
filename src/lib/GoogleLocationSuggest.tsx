@@ -79,10 +79,10 @@ export const GoogleLocationSuggest: FC<GoogleLocationProps> = (props) => {
 
     const handleResultClick = async (item: any) => {
         setInput(item.description);
+        setOpen(false);
         const response = fieldProps.detailedResponse ? GoogleUtils.transformAddress(await GoogleUtils.placeDetails(item.place_id)) : item;
         onResultClick?.(response);
         formikProps?.setFieldValue(fieldConfig?.valueKey!, responseParser(response))
-        setOpen(false);
     }
     return (
         <>
