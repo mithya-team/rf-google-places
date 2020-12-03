@@ -5691,6 +5691,7 @@ var GoogleLocationSuggest = function (props) {
             switch (_d.label) {
                 case 0:
                     setInput(item.description);
+                    setOpen(false);
                     if (!fieldProps.detailedResponse) return [3 /*break*/, 2];
                     _c = (_b = GoogleUtils).transformAddress;
                     return [4 /*yield*/, GoogleUtils.placeDetails(item.place_id)];
@@ -5704,7 +5705,6 @@ var GoogleLocationSuggest = function (props) {
                     response = _a;
                     onResultClick === null || onResultClick === void 0 ? void 0 : onResultClick(response);
                     formikProps === null || formikProps === void 0 ? void 0 : formikProps.setFieldValue(fieldConfig === null || fieldConfig === void 0 ? void 0 : fieldConfig.valueKey, responseParser(response));
-                    setOpen(false);
                     return [2 /*return*/];
             }
         });
