@@ -6,21 +6,41 @@ import React, { FC, useEffect, useState } from 'react';
 import { GoogleUtils, TGooglePlaceSuggestCategories } from './google';
 import Clear from '@material-ui/icons/Clear';
 import SearchIcon from '@material-ui/icons/Search';
+import { IFieldProps } from 'react-forms';
 
 
 export type GoogleLocationSuggestProps = TextFieldProps & {
     onResultClick: (result: any) => void
     suggestionsTypes: TGooglePlaceSuggestCategories[]
-    value?: any
+    value?: any;
+    responseParser?: (res: any) => any;
+    /**
+     * true if needed the complete place detail instead of autocomplete response object.
+     * default is false
+     * 
+        ```typescript
+        interface FormattedAddress {
+            placeId: string,
+            fullAddress: string;
+            address1: string;
+            state: string;
+            city: string;
+            locality: string;
+            zipCode: string;
+            country: string;
+        }
+        ```
+     */
+    detailedResponse?: boolean;
 }
 
-export interface GoogleLocationProps {
+export interface GoogleLocationProps extends IFieldProps {
     fieldProps: GoogleLocationSuggestProps
 }
 
 export const GoogleLocationSuggest: FC<GoogleLocationProps> = (props) => {
     const classes = useStyles();
-    const { fieldProps, } = props
+    const { fieldProps, formikProps, fieldConfig } = props
     const [input, setInput] = useState('');
     const [result, setResult] = useState<any[]>([]);
     const [open, setOpen] = useState<boolean>(false);
@@ -34,6 +54,7 @@ export const GoogleLocationSuggest: FC<GoogleLocationProps> = (props) => {
         onResultClick,
         suggestionsTypes,
         value,
+        responseParser = res => res,
         ...textFieldProps
     } = fieldProps
 
@@ -55,9 +76,11 @@ export const GoogleLocationSuggest: FC<GoogleLocationProps> = (props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [input]);
 
-    const handleResultClick = (item: any) => {
-        setInput(item.description)
-        typeof onResultClick === 'function' && onResultClick(item);
+    const handleResultClick = async (item: any) => {
+        setInput(item.description);
+        const response = fieldProps.detailedResponse ? await GoogleUtils.placeDetails(item.placeid) : item;
+        onResultClick?.(response);
+        formikProps?.setFieldValue(fieldConfig?.valueKey!, responseParser(response))
         setOpen(false);
     }
     return (

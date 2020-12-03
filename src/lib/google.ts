@@ -15,6 +15,17 @@ export interface TPosition {
     lng: number
 }
 
+export interface FormattedAddress {
+    placeId: string,
+    fullAddress: string;
+    address1: string;
+    state: string;
+    city: string;
+    locality: string;
+    zipCode: string;
+    country: string;
+}
+
 export const GoogleUtils = {
 
 
@@ -67,9 +78,9 @@ export const GoogleUtils = {
         return newTypes;
     },
 
-    transformAddress: (place: google.maps.places.PlaceResult) => {
+    transformAddress: (place: google.maps.places.PlaceResult): FormattedAddress => {
         if (!place)
-            return;
+            throw new Error("Cannot find place");
         let addressComponents = place.address_components || [];
         type TGeoAddress = Record<typeof GoogleUtils.geoAddressFields[number], string>;
         let geoAddress: TGeoAddress = {} as TGeoAddress;
@@ -81,14 +92,14 @@ export const GoogleUtils = {
             });
 
         });
-        let shAddress = {
-            placeid: place.place_id,
-            "full_address": place.formatted_address,
+        let shAddress: FormattedAddress = {
+            placeId: place.place_id!,
+            "fullAddress": place.formatted_address || '',
             "address1": [geoAddress.administrative_area_level_1, geoAddress.route, geoAddress.sublocality_level_2].join(', '),
             "state": geoAddress.administrative_area_level_1,
             "city": geoAddress.locality,
             "locality": geoAddress.sublocality_level_1,
-            "zipcode": geoAddress.postal_code,
+            "zipCode": geoAddress.postal_code,
             "country": geoAddress.country
         };
         return shAddress;
