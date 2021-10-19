@@ -26,6 +26,7 @@ export interface FormattedAddress {
     country: string;
     location: { lat: number, lng: number }
     name: string
+    description: any
 }
 
 export const GoogleUtils = {
@@ -80,7 +81,7 @@ export const GoogleUtils = {
         return newTypes;
     },
 
-    transformAddress: (place: google.maps.places.PlaceResult): FormattedAddress => {
+    transformAddress: (place: google.maps.places.PlaceResult, description: any): FormattedAddress => {
         if (!place)
             throw new Error("Cannot find place");
         let addressComponents = place.address_components || [];
@@ -94,7 +95,6 @@ export const GoogleUtils = {
             });
 
         });
-        console.log('parser is working')
         let shAddress: FormattedAddress = {
             placeId: place.place_id!,
             "fullAddress": place.formatted_address || '',
@@ -105,7 +105,8 @@ export const GoogleUtils = {
             "zipCode": geoAddress.postal_code,
             "country": geoAddress.country,
             "name": place.name,
-            "location": { lat: place.geometry?.location.lat() || 0, lng: place.geometry?.location.lng() || 0 }
+            "location": { lat: place.geometry?.location.lat() || 0, lng: place.geometry?.location.lng() || 0 },
+            description
         };
         return shAddress;
     },

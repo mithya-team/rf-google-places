@@ -1,6 +1,7 @@
 import { attachField } from 'react-forms';
 import React, { useState, useEffect } from 'react';
-import { TextField, InputAdornment, IconButton, ListItemText, createStyles } from '@material-ui/core';
+import { TextField, InputAdornment, IconButton, ListItemText } from '@material-ui/core';
+import { createStyles } from '@material-ui/core/styles';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Clear from '@material-ui/icons/Clear';
 import SearchIcon from '@material-ui/icons/Search';
@@ -5587,7 +5588,7 @@ var GoogleUtils = {
         });
         return newTypes;
     },
-    transformAddress: function (place) {
+    transformAddress: function (place, description) {
         var _a, _b;
         if (!place)
             throw new Error("Cannot find place");
@@ -5599,7 +5600,6 @@ var GoogleUtils = {
                     geoAddress[addressField] = addComp.long_name;
             });
         });
-        console.log('parser is working');
         var shAddress = {
             placeId: place.place_id,
             "fullAddress": place.formatted_address || '',
@@ -5610,7 +5610,8 @@ var GoogleUtils = {
             "zipCode": geoAddress.postal_code,
             "country": geoAddress.country,
             "name": place.name,
-            "location": { lat: ((_a = place.geometry) === null || _a === void 0 ? void 0 : _a.location.lat()) || 0, lng: ((_b = place.geometry) === null || _b === void 0 ? void 0 : _b.location.lng()) || 0 }
+            "location": { lat: ((_a = place.geometry) === null || _a === void 0 ? void 0 : _a.location.lat()) || 0, lng: ((_b = place.geometry) === null || _b === void 0 ? void 0 : _b.location.lng()) || 0 },
+            description: description
         };
         return shAddress;
     },
@@ -5654,7 +5655,7 @@ var GoogleUtils = {
 var GoogleLocationSuggest = function (props) {
     var classes = useStyles();
     var fieldProps = props.fieldProps, formikProps = props.formikProps, fieldConfig = props.fieldConfig;
-    var _a = useState(''), input = _a[0], setInput = _a[1];
+    var _a = useState(""), input = _a[0], setInput = _a[1];
     var _b = useState([]), result = _b[0], setResult = _b[1];
     var _c = useState(false), open = _c[0], setOpen = _c[1];
     var handleInputChange = function (e) {
@@ -5667,7 +5668,7 @@ var GoogleLocationSuggest = function (props) {
     var clearInput = function () {
         if (open)
             setOpen(false);
-        setInput('');
+        setInput("");
         setResult([]);
     };
     var getSuggestions = function () { return __awaiter(void 0, void 0, void 0, function () {
@@ -5676,7 +5677,8 @@ var GoogleLocationSuggest = function (props) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, GoogleUtils.placeSuggest(input, suggestionsTypes)];
                 case 1:
-                    res = _a.sent();
+                    res = (_a.sent());
+                    console.log(res);
                     if (res)
                         setResult(res);
                     return [2 /*return*/];
@@ -5700,7 +5702,7 @@ var GoogleLocationSuggest = function (props) {
                     _c = (_b = GoogleUtils).transformAddress;
                     return [4 /*yield*/, GoogleUtils.placeDetails(item.place_id)];
                 case 1:
-                    _a = _c.apply(_b, [_d.sent()]);
+                    _a = _c.apply(_b, [_d.sent(), item.description]);
                     return [3 /*break*/, 3];
                 case 2:
                     _a = item;
@@ -5714,23 +5716,21 @@ var GoogleLocationSuggest = function (props) {
         });
     }); };
     return (React.createElement(React.Fragment, null,
-        React.createElement(Autocomplete, { getOptionLabel: function (option) { return option.description; }, classes: { popper: classes.popper }, filterOptions: function (x) { return x; }, options: result, includeInputInList: true, fullWidth: textFieldProps.fullWidth, autoComplete: true, open: open && (input.length > 0), forcePopupIcon: false, disableClearable: true, getOptionSelected: function (option) { return option.description; }, value: value || null, renderInput: function (params) {
-                return React.createElement(TextField, __assign({}, params, { inputProps: __assign(__assign({}, params.inputProps), { onChange: handleInputChange, value: input || '' }), InputProps: __assign(__assign({ endAdornment: (React.createElement(InputAdornment, { position: 'end' },
-                            React.createElement(IconButton, { onClick: clearInput },
-                                React.createElement(Clear, { fontSize: 'small', className: classes.endIcon })))), startAdornment: (React.createElement(InputAdornment, { position: 'start' },
-                            React.createElement(IconButton, { disableRipple: true, disableFocusRipple: true, disableTouchRipple: true },
-                                React.createElement(SearchIcon, { fontSize: 'small' })))) }, params.InputProps), textFieldProps.InputProps), placeholder: 'Search on google', variant: 'standard' }, textFieldProps));
-            }, renderOption: function (item) { return (React.createElement(ListItemText, { onClick: function () { return handleResultClick(item); } }, item.description)); } })));
+        React.createElement(Autocomplete, { getOptionLabel: function (option) { return option.description; }, classes: { popper: classes.popper }, filterOptions: function (x) { return x; }, options: result, includeInputInList: true, fullWidth: textFieldProps.fullWidth, autoComplete: true, open: open && input.length > 0, forcePopupIcon: false, disableClearable: true, getOptionSelected: function (option) { return option.description; }, value: value || null, renderInput: function (params) { return (React.createElement(TextField, __assign({}, params, { inputProps: __assign(__assign({}, params.inputProps), { onChange: handleInputChange, value: input || "" }), InputProps: __assign(__assign({ endAdornment: (React.createElement(InputAdornment, { position: "end" },
+                        React.createElement(IconButton, { onClick: clearInput },
+                            React.createElement(Clear, { fontSize: "small", className: classes.endIcon })))), startAdornment: (React.createElement(InputAdornment, { position: "start" },
+                        React.createElement(IconButton, { disableRipple: true, disableFocusRipple: true, disableTouchRipple: true },
+                            React.createElement(SearchIcon, { fontSize: "small" })))) }, params.InputProps), textFieldProps.InputProps), placeholder: "Search on google", variant: "standard" }, textFieldProps))); }, renderOption: function (item) { return (React.createElement(ListItemText, { onClick: function () { return handleResultClick(item); } }, item.description)); } })));
 };
 var useStyles = makeStyles(function () {
-    return (createStyles({
+    return createStyles({
         popper: {
         // zIndex: theme.zIndex.modal + 1
         },
         endIcon: {
-            cursor: 'pointer'
-        }
-    }));
+            cursor: "pointer",
+        },
+    });
 });
 
 // @ts-ignore

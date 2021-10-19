@@ -27,13 +27,14 @@ export interface FormattedAddress {
         lng: number;
     };
     name: string;
+    description: any;
 }
 export declare const GoogleUtils: {
     geoAddressFields: string[];
     placeSuggest: (input: string, types: TGooglePlaceSuggestCategories[]) => Promise<unknown>;
     placeDetails: (placeId: string) => Promise<google.maps.places.PlaceResult>;
     placeTypesParser: (types: string[] | undefined, typeMap: Record<string, string[]>) => string[];
-    transformAddress: (place: google.maps.places.PlaceResult) => FormattedAddress;
+    transformAddress: (place: google.maps.places.PlaceResult, description: any) => FormattedAddress;
     getDistance: (coord1: TPosition, coord2: TPosition) => number;
     formatOpeningHours: (openingHours: google.maps.places.OpeningHours | undefined) => {
         periods: any[];
