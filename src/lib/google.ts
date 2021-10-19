@@ -24,6 +24,8 @@ export interface FormattedAddress {
     locality: string;
     zipCode: string;
     country: string;
+    location: { lat: number, lng: number }
+    name: string
 }
 
 export const GoogleUtils = {
@@ -92,6 +94,7 @@ export const GoogleUtils = {
             });
 
         });
+        console.log('parser is working')
         let shAddress: FormattedAddress = {
             placeId: place.place_id!,
             "fullAddress": place.formatted_address || '',
@@ -100,7 +103,9 @@ export const GoogleUtils = {
             "city": geoAddress.locality,
             "locality": geoAddress.sublocality_level_1,
             "zipCode": geoAddress.postal_code,
-            "country": geoAddress.country
+            "country": geoAddress.country,
+            "name": place.name,
+            "location": { lat: place.geometry?.location.lat() || 0, lng: place.geometry?.location.lng() || 0 }
         };
         return shAddress;
     },

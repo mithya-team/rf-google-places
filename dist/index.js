@@ -5595,6 +5595,7 @@ var GoogleUtils = {
         return newTypes;
     },
     transformAddress: function (place) {
+        var _a, _b;
         if (!place)
             throw new Error("Cannot find place");
         var addressComponents = place.address_components || [];
@@ -5605,6 +5606,7 @@ var GoogleUtils = {
                     geoAddress[addressField] = addComp.long_name;
             });
         });
+        console.log('parser is working');
         var shAddress = {
             placeId: place.place_id,
             "fullAddress": place.formatted_address || '',
@@ -5613,7 +5615,9 @@ var GoogleUtils = {
             "city": geoAddress.locality,
             "locality": geoAddress.sublocality_level_1,
             "zipCode": geoAddress.postal_code,
-            "country": geoAddress.country
+            "country": geoAddress.country,
+            "name": place.name,
+            "location": { lat: ((_a = place.geometry) === null || _a === void 0 ? void 0 : _a.location.lat()) || 0, lng: ((_b = place.geometry) === null || _b === void 0 ? void 0 : _b.location.lng()) || 0 }
         };
         return shAddress;
     },

@@ -22,6 +22,11 @@ export interface FormattedAddress {
     locality: string;
     zipCode: string;
     country: string;
+    location: {
+        lat: number;
+        lng: number;
+    };
+    name: string;
 }
 export declare const GoogleUtils: {
     geoAddressFields: string[];
