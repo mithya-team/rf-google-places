@@ -75,7 +75,6 @@ export const GoogleLocationSuggest: FC<GoogleLocationProps> = (props) => {
       input,
       suggestionsTypes
     )) as any[];
-    console.log(res);
     if (res) setResult(res);
   };
 

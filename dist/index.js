@@ -5685,7 +5685,6 @@ var GoogleLocationSuggest = function (props) {
                 case 0: return [4 /*yield*/, GoogleUtils.placeSuggest(input, suggestionsTypes)];
                 case 1:
                     res = (_a.sent());
-                    console.log(res);
                     if (res)
                         setResult(res);
                     return [2 /*return*/];
