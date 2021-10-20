@@ -5715,7 +5715,14 @@ var GoogleLocationSuggest = function (props) {
         });
     }); };
     return (React.createElement(React.Fragment, null,
-        React.createElement(Autocomplete, { getOptionLabel: function (option) { return option.description; }, classes: { popper: classes.popper }, filterOptions: function (x) { return x; }, options: result, includeInputInList: true, fullWidth: textFieldProps.fullWidth, autoComplete: true, open: open && input.length > 0, forcePopupIcon: false, disableClearable: true, getOptionSelected: function (option) { return option.description; }, value: value || null, renderInput: function (params) { return (React.createElement(TextField, __assign({}, params, { inputProps: __assign(__assign({}, params.inputProps), { onChange: handleInputChange, value: input || "" }), InputProps: __assign(__assign({ endAdornment: (React.createElement(InputAdornment, { position: "end" },
+        React.createElement(Autocomplete, { getOptionLabel: function (option) { return option.description; }, classes: { popper: classes.popper }, filterOptions: function (x) { return x; }, options: result, includeInputInList: true, fullWidth: textFieldProps.fullWidth, autoComplete: true, open: open && input.length > 0, forcePopupIcon: false, disableClearable: !value, getOptionSelected: function (option, value) {
+                return option.description === value.description;
+            }, value: value || null, renderInput: function (params) { return (React.createElement(TextField, __assign({}, params, { onChange: handleInputChange, value: input || "", 
+                // inputProps={{
+                //     ...params.inputProps,
+                //     // ...inputProps
+                // }}
+                InputProps: __assign(__assign({ endAdornment: (React.createElement(InputAdornment, { position: "end" },
                         React.createElement(IconButton, { onClick: clearInput },
                             React.createElement(Clear, { fontSize: "small", className: classes.endIcon })))), startAdornment: (React.createElement(InputAdornment, { position: "start" },
                         React.createElement(IconButton, { disableRipple: true, disableFocusRipple: true, disableTouchRipple: true },

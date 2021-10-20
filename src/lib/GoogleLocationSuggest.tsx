@@ -64,7 +64,6 @@ export const GoogleLocationSuggest: FC<GoogleLocationProps> = (props) => {
     responseParser = (res: any) => res,
     ...textFieldProps
   } = fieldProps;
-
   const clearInput = () => {
     if (open) setOpen(false);
     setInput("");
@@ -112,18 +111,21 @@ export const GoogleLocationSuggest: FC<GoogleLocationProps> = (props) => {
         autoComplete
         open={open && input.length > 0}
         forcePopupIcon={false}
-        disableClearable
-        getOptionSelected={(option) => option.description}
+        disableClearable={!value}
+        getOptionSelected={(option, value) =>
+          option.description === value.description
+        }
         value={value || null}
         renderInput={(params) => (
           <TextField
             {...params}
-            inputProps={{
-              ...params.inputProps,
-              onChange: handleInputChange,
-              value: input || "",
-              // ...inputProps
-            }}
+            onChange={handleInputChange}
+            value={input || ""}
+            // inputProps={{
+            //     ...params.inputProps,
+
+            //     // ...inputProps
+            // }}
             InputProps={{
               endAdornment: (
                 <InputAdornment position={"end"}>
