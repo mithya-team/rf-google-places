@@ -5602,6 +5602,7 @@ var GoogleUtils = {
         });
         var shAddress = {
             placeId: place.place_id,
+            "mapLink": place.url,
             "fullAddress": place.formatted_address || '',
             "address1": [geoAddress.administrative_area_level_1, geoAddress.route, geoAddress.sublocality_level_2].join(', '),
             "state": geoAddress.administrative_area_level_1,
@@ -5715,7 +5716,7 @@ var GoogleLocationSuggest = function (props) {
         });
     }); };
     return (React.createElement(React.Fragment, null,
-        React.createElement(Autocomplete, { getOptionLabel: function (option) { return option.description; }, classes: { popper: classes.popper }, filterOptions: function (x) { return x; }, options: result, includeInputInList: true, fullWidth: textFieldProps.fullWidth, autoComplete: true, open: open && input.length > 0, forcePopupIcon: false, disableClearable: !value, getOptionSelected: function (option, value) {
+        React.createElement(Autocomplete, { getOptionLabel: function (option) { return option.description || ""; }, classes: { popper: classes.popper }, filterOptions: function (x) { return x; }, options: result, includeInputInList: true, fullWidth: textFieldProps.fullWidth, autoComplete: true, open: open && input.length > 0, forcePopupIcon: false, disableClearable: !value, getOptionSelected: function (option, value) {
                 return option.description === value.description;
             }, value: value || null, renderInput: function (params) { return (React.createElement(TextField, __assign({}, params, { onChange: handleInputChange, value: input || "", 
                 // inputProps={{

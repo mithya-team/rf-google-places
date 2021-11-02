@@ -28,6 +28,7 @@ export interface FormattedAddress {
     };
     name: string;
     description: any;
+    mapLink?: string;
 }
 export declare const GoogleUtils: {
     geoAddressFields: string[];

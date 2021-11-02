@@ -102,7 +102,7 @@ export const GoogleLocationSuggest: FC<GoogleLocationProps> = (props) => {
   return (
     <>
       <Autocomplete
-        getOptionLabel={(option) => option.description}
+        getOptionLabel={(option) => option.description || ""}
         classes={{ popper: classes.popper }}
         filterOptions={(x) => x}
         options={result}

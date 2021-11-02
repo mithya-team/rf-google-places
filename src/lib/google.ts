@@ -27,6 +27,7 @@ export interface FormattedAddress {
     location: { lat: number, lng: number }
     name: string
     description: any
+    mapLink?: string
 }
 
 export const GoogleUtils = {
@@ -97,6 +98,7 @@ export const GoogleUtils = {
         });
         let shAddress: FormattedAddress = {
             placeId: place.place_id!,
+            "mapLink": place.url,
             "fullAddress": place.formatted_address || '',
             "address1": [geoAddress.administrative_area_level_1, geoAddress.route, geoAddress.sublocality_level_2].join(', '),
             "state": geoAddress.administrative_area_level_1,
