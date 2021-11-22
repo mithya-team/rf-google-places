@@ -9,23 +9,23 @@ var React = require('react');
 var React__default = _interopDefault(React);
 var core = require('@material-ui/core');
 var styles = require('@material-ui/core/styles');
-var Autocomplete = _interopDefault(require('@material-ui/lab/Autocomplete'));
 var Clear = _interopDefault(require('@material-ui/icons/Clear'));
 var SearchIcon = _interopDefault(require('@material-ui/icons/Search'));
+var Autocomplete = _interopDefault(require('@material-ui/lab/Autocomplete'));
 
 /*! *****************************************************************************
-Copyright (c) Microsoft Corporation.
+Copyright (c) Microsoft Corporation. All rights reserved.
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+this file except in compliance with the License. You may obtain a copy of the
+License at http://www.apache.org/licenses/LICENSE-2.0
 
-Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted.
+THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
+WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
+MERCHANTABLITY OR NON-INFRINGEMENT.
 
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
-REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
-AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
-INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
-LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
-OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-PERFORMANCE OF THIS SOFTWARE.
+See the Apache Version 2.0 License for specific language governing permissions
+and limitations under the License.
 ***************************************************************************** */
 
 var __assign = function() {
@@ -52,11 +52,10 @@ function __rest(s, e) {
 }
 
 function __awaiter(thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 }
@@ -409,10 +408,6 @@ if (process.env.NODE_ENV === 'production') {
   module.exports = reactIs_development;
 }
 });
-var reactIs_1 = reactIs.isElement;
-var reactIs_2 = reactIs.isValidElementType;
-var reactIs_3 = reactIs.ForwardRef;
-var reactIs_4 = reactIs.Memo;
 
 /*
 object-assign
@@ -1300,6 +1295,307 @@ function exactProp(propTypes) {
   }));
 }
 
+/** @license React v17.0.2
+ * react-is.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+var b$1=60103,c$1=60106,d$1=60107,e$1=60108,f$1=60114,g$1=60109,h$1=60110,k$1=60112,l$1=60113,m$1=60120,n$1=60115,p$1=60116,q$1=60121,r$1=60122,u=60117,v$1=60129,w$1=60131;
+if("function"===typeof Symbol&&Symbol.for){var x$1=Symbol.for;b$1=x$1("react.element");c$1=x$1("react.portal");d$1=x$1("react.fragment");e$1=x$1("react.strict_mode");f$1=x$1("react.profiler");g$1=x$1("react.provider");h$1=x$1("react.context");k$1=x$1("react.forward_ref");l$1=x$1("react.suspense");m$1=x$1("react.suspense_list");n$1=x$1("react.memo");p$1=x$1("react.lazy");q$1=x$1("react.block");r$1=x$1("react.server.block");u=x$1("react.fundamental");v$1=x$1("react.debug_trace_mode");w$1=x$1("react.legacy_hidden");}
+function y$1(a){if("object"===typeof a&&null!==a){var t=a.$$typeof;switch(t){case b$1:switch(a=a.type,a){case d$1:case f$1:case e$1:case l$1:case m$1:return a;default:switch(a=a&&a.$$typeof,a){case h$1:case k$1:case p$1:case n$1:case g$1:return a;default:return t}}case c$1:return t}}}var z$1=g$1,A$1=b$1,B=k$1,C=d$1,D=p$1,E=n$1,F=c$1,G=f$1,H=e$1,I=l$1;var ContextConsumer$1=h$1;var ContextProvider$1=z$1;var Element$1=A$1;var ForwardRef$1=B;var Fragment$1=C;var Lazy$1=D;var Memo$1=E;var Portal$1=F;var Profiler$1=G;var StrictMode$1=H;
+var Suspense$1=I;var isAsyncMode$1=function(){return !1};var isConcurrentMode$1=function(){return !1};var isContextConsumer$1=function(a){return y$1(a)===h$1};var isContextProvider$1=function(a){return y$1(a)===g$1};var isElement$1=function(a){return "object"===typeof a&&null!==a&&a.$$typeof===b$1};var isForwardRef$1=function(a){return y$1(a)===k$1};var isFragment$1=function(a){return y$1(a)===d$1};var isLazy$1=function(a){return y$1(a)===p$1};var isMemo$1=function(a){return y$1(a)===n$1};
+var isPortal$1=function(a){return y$1(a)===c$1};var isProfiler$1=function(a){return y$1(a)===f$1};var isStrictMode$1=function(a){return y$1(a)===e$1};var isSuspense$1=function(a){return y$1(a)===l$1};var isValidElementType$1=function(a){return "string"===typeof a||"function"===typeof a||a===d$1||a===f$1||a===v$1||a===e$1||a===l$1||a===m$1||a===w$1||"object"===typeof a&&null!==a&&(a.$$typeof===p$1||a.$$typeof===n$1||a.$$typeof===g$1||a.$$typeof===h$1||a.$$typeof===k$1||a.$$typeof===u||a.$$typeof===q$1||a[0]===r$1)?!0:!1};
+var typeOf$1=y$1;
+
+var reactIs_production_min$1 = {
+	ContextConsumer: ContextConsumer$1,
+	ContextProvider: ContextProvider$1,
+	Element: Element$1,
+	ForwardRef: ForwardRef$1,
+	Fragment: Fragment$1,
+	Lazy: Lazy$1,
+	Memo: Memo$1,
+	Portal: Portal$1,
+	Profiler: Profiler$1,
+	StrictMode: StrictMode$1,
+	Suspense: Suspense$1,
+	isAsyncMode: isAsyncMode$1,
+	isConcurrentMode: isConcurrentMode$1,
+	isContextConsumer: isContextConsumer$1,
+	isContextProvider: isContextProvider$1,
+	isElement: isElement$1,
+	isForwardRef: isForwardRef$1,
+	isFragment: isFragment$1,
+	isLazy: isLazy$1,
+	isMemo: isMemo$1,
+	isPortal: isPortal$1,
+	isProfiler: isProfiler$1,
+	isStrictMode: isStrictMode$1,
+	isSuspense: isSuspense$1,
+	isValidElementType: isValidElementType$1,
+	typeOf: typeOf$1
+};
+
+var reactIs_development$1 = createCommonjsModule(function (module, exports) {
+
+if (process.env.NODE_ENV !== "production") {
+  (function() {
+
+// ATTENTION
+// When adding new symbols to this file,
+// Please consider also adding to 'react-devtools-shared/src/backend/ReactSymbols'
+// The Symbol used to tag the ReactElement-like types. If there is no native Symbol
+// nor polyfill, then a plain number is used for performance.
+var REACT_ELEMENT_TYPE = 0xeac7;
+var REACT_PORTAL_TYPE = 0xeaca;
+var REACT_FRAGMENT_TYPE = 0xeacb;
+var REACT_STRICT_MODE_TYPE = 0xeacc;
+var REACT_PROFILER_TYPE = 0xead2;
+var REACT_PROVIDER_TYPE = 0xeacd;
+var REACT_CONTEXT_TYPE = 0xeace;
+var REACT_FORWARD_REF_TYPE = 0xead0;
+var REACT_SUSPENSE_TYPE = 0xead1;
+var REACT_SUSPENSE_LIST_TYPE = 0xead8;
+var REACT_MEMO_TYPE = 0xead3;
+var REACT_LAZY_TYPE = 0xead4;
+var REACT_BLOCK_TYPE = 0xead9;
+var REACT_SERVER_BLOCK_TYPE = 0xeada;
+var REACT_FUNDAMENTAL_TYPE = 0xead5;
+var REACT_SCOPE_TYPE = 0xead7;
+var REACT_OPAQUE_ID_TYPE = 0xeae0;
+var REACT_DEBUG_TRACING_MODE_TYPE = 0xeae1;
+var REACT_OFFSCREEN_TYPE = 0xeae2;
+var REACT_LEGACY_HIDDEN_TYPE = 0xeae3;
+
+if (typeof Symbol === 'function' && Symbol.for) {
+  var symbolFor = Symbol.for;
+  REACT_ELEMENT_TYPE = symbolFor('react.element');
+  REACT_PORTAL_TYPE = symbolFor('react.portal');
+  REACT_FRAGMENT_TYPE = symbolFor('react.fragment');
+  REACT_STRICT_MODE_TYPE = symbolFor('react.strict_mode');
+  REACT_PROFILER_TYPE = symbolFor('react.profiler');
+  REACT_PROVIDER_TYPE = symbolFor('react.provider');
+  REACT_CONTEXT_TYPE = symbolFor('react.context');
+  REACT_FORWARD_REF_TYPE = symbolFor('react.forward_ref');
+  REACT_SUSPENSE_TYPE = symbolFor('react.suspense');
+  REACT_SUSPENSE_LIST_TYPE = symbolFor('react.suspense_list');
+  REACT_MEMO_TYPE = symbolFor('react.memo');
+  REACT_LAZY_TYPE = symbolFor('react.lazy');
+  REACT_BLOCK_TYPE = symbolFor('react.block');
+  REACT_SERVER_BLOCK_TYPE = symbolFor('react.server.block');
+  REACT_FUNDAMENTAL_TYPE = symbolFor('react.fundamental');
+  REACT_SCOPE_TYPE = symbolFor('react.scope');
+  REACT_OPAQUE_ID_TYPE = symbolFor('react.opaque.id');
+  REACT_DEBUG_TRACING_MODE_TYPE = symbolFor('react.debug_trace_mode');
+  REACT_OFFSCREEN_TYPE = symbolFor('react.offscreen');
+  REACT_LEGACY_HIDDEN_TYPE = symbolFor('react.legacy_hidden');
+}
+
+// Filter certain DOM attributes (e.g. src, href) if their values are empty strings.
+
+var enableScopeAPI = false; // Experimental Create Event Handle API.
+
+function isValidElementType(type) {
+  if (typeof type === 'string' || typeof type === 'function') {
+    return true;
+  } // Note: typeof might be other than 'symbol' or 'number' (e.g. if it's a polyfill).
+
+
+  if (type === REACT_FRAGMENT_TYPE || type === REACT_PROFILER_TYPE || type === REACT_DEBUG_TRACING_MODE_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || type === REACT_LEGACY_HIDDEN_TYPE || enableScopeAPI ) {
+    return true;
+  }
+
+  if (typeof type === 'object' && type !== null) {
+    if (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_FUNDAMENTAL_TYPE || type.$$typeof === REACT_BLOCK_TYPE || type[0] === REACT_SERVER_BLOCK_TYPE) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+function typeOf(object) {
+  if (typeof object === 'object' && object !== null) {
+    var $$typeof = object.$$typeof;
+
+    switch ($$typeof) {
+      case REACT_ELEMENT_TYPE:
+        var type = object.type;
+
+        switch (type) {
+          case REACT_FRAGMENT_TYPE:
+          case REACT_PROFILER_TYPE:
+          case REACT_STRICT_MODE_TYPE:
+          case REACT_SUSPENSE_TYPE:
+          case REACT_SUSPENSE_LIST_TYPE:
+            return type;
+
+          default:
+            var $$typeofType = type && type.$$typeof;
+
+            switch ($$typeofType) {
+              case REACT_CONTEXT_TYPE:
+              case REACT_FORWARD_REF_TYPE:
+              case REACT_LAZY_TYPE:
+              case REACT_MEMO_TYPE:
+              case REACT_PROVIDER_TYPE:
+                return $$typeofType;
+
+              default:
+                return $$typeof;
+            }
+
+        }
+
+      case REACT_PORTAL_TYPE:
+        return $$typeof;
+    }
+  }
+
+  return undefined;
+}
+var ContextConsumer = REACT_CONTEXT_TYPE;
+var ContextProvider = REACT_PROVIDER_TYPE;
+var Element = REACT_ELEMENT_TYPE;
+var ForwardRef = REACT_FORWARD_REF_TYPE;
+var Fragment = REACT_FRAGMENT_TYPE;
+var Lazy = REACT_LAZY_TYPE;
+var Memo = REACT_MEMO_TYPE;
+var Portal = REACT_PORTAL_TYPE;
+var Profiler = REACT_PROFILER_TYPE;
+var StrictMode = REACT_STRICT_MODE_TYPE;
+var Suspense = REACT_SUSPENSE_TYPE;
+var hasWarnedAboutDeprecatedIsAsyncMode = false;
+var hasWarnedAboutDeprecatedIsConcurrentMode = false; // AsyncMode should be deprecated
+
+function isAsyncMode(object) {
+  {
+    if (!hasWarnedAboutDeprecatedIsAsyncMode) {
+      hasWarnedAboutDeprecatedIsAsyncMode = true; // Using console['warn'] to evade Babel and ESLint
+
+      console['warn']('The ReactIs.isAsyncMode() alias has been deprecated, ' + 'and will be removed in React 18+.');
+    }
+  }
+
+  return false;
+}
+function isConcurrentMode(object) {
+  {
+    if (!hasWarnedAboutDeprecatedIsConcurrentMode) {
+      hasWarnedAboutDeprecatedIsConcurrentMode = true; // Using console['warn'] to evade Babel and ESLint
+
+      console['warn']('The ReactIs.isConcurrentMode() alias has been deprecated, ' + 'and will be removed in React 18+.');
+    }
+  }
+
+  return false;
+}
+function isContextConsumer(object) {
+  return typeOf(object) === REACT_CONTEXT_TYPE;
+}
+function isContextProvider(object) {
+  return typeOf(object) === REACT_PROVIDER_TYPE;
+}
+function isElement(object) {
+  return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+}
+function isForwardRef(object) {
+  return typeOf(object) === REACT_FORWARD_REF_TYPE;
+}
+function isFragment(object) {
+  return typeOf(object) === REACT_FRAGMENT_TYPE;
+}
+function isLazy(object) {
+  return typeOf(object) === REACT_LAZY_TYPE;
+}
+function isMemo(object) {
+  return typeOf(object) === REACT_MEMO_TYPE;
+}
+function isPortal(object) {
+  return typeOf(object) === REACT_PORTAL_TYPE;
+}
+function isProfiler(object) {
+  return typeOf(object) === REACT_PROFILER_TYPE;
+}
+function isStrictMode(object) {
+  return typeOf(object) === REACT_STRICT_MODE_TYPE;
+}
+function isSuspense(object) {
+  return typeOf(object) === REACT_SUSPENSE_TYPE;
+}
+
+exports.ContextConsumer = ContextConsumer;
+exports.ContextProvider = ContextProvider;
+exports.Element = Element;
+exports.ForwardRef = ForwardRef;
+exports.Fragment = Fragment;
+exports.Lazy = Lazy;
+exports.Memo = Memo;
+exports.Portal = Portal;
+exports.Profiler = Profiler;
+exports.StrictMode = StrictMode;
+exports.Suspense = Suspense;
+exports.isAsyncMode = isAsyncMode;
+exports.isConcurrentMode = isConcurrentMode;
+exports.isContextConsumer = isContextConsumer;
+exports.isContextProvider = isContextProvider;
+exports.isElement = isElement;
+exports.isForwardRef = isForwardRef;
+exports.isFragment = isFragment;
+exports.isLazy = isLazy;
+exports.isMemo = isMemo;
+exports.isPortal = isPortal;
+exports.isProfiler = isProfiler;
+exports.isStrictMode = isStrictMode;
+exports.isSuspense = isSuspense;
+exports.isValidElementType = isValidElementType;
+exports.typeOf = typeOf;
+  })();
+}
+});
+var reactIs_development_1$1 = reactIs_development$1.ContextConsumer;
+var reactIs_development_2$1 = reactIs_development$1.ContextProvider;
+var reactIs_development_3$1 = reactIs_development$1.Element;
+var reactIs_development_4$1 = reactIs_development$1.ForwardRef;
+var reactIs_development_5$1 = reactIs_development$1.Fragment;
+var reactIs_development_6$1 = reactIs_development$1.Lazy;
+var reactIs_development_7$1 = reactIs_development$1.Memo;
+var reactIs_development_8$1 = reactIs_development$1.Portal;
+var reactIs_development_9$1 = reactIs_development$1.Profiler;
+var reactIs_development_10$1 = reactIs_development$1.StrictMode;
+var reactIs_development_11$1 = reactIs_development$1.Suspense;
+var reactIs_development_12$1 = reactIs_development$1.isAsyncMode;
+var reactIs_development_13$1 = reactIs_development$1.isConcurrentMode;
+var reactIs_development_14$1 = reactIs_development$1.isContextConsumer;
+var reactIs_development_15$1 = reactIs_development$1.isContextProvider;
+var reactIs_development_16$1 = reactIs_development$1.isElement;
+var reactIs_development_17$1 = reactIs_development$1.isForwardRef;
+var reactIs_development_18$1 = reactIs_development$1.isFragment;
+var reactIs_development_19$1 = reactIs_development$1.isLazy;
+var reactIs_development_20$1 = reactIs_development$1.isMemo;
+var reactIs_development_21$1 = reactIs_development$1.isPortal;
+var reactIs_development_22$1 = reactIs_development$1.isProfiler;
+var reactIs_development_23$1 = reactIs_development$1.isStrictMode;
+var reactIs_development_24$1 = reactIs_development$1.isSuspense;
+var reactIs_development_25$1 = reactIs_development$1.isValidElementType;
+var reactIs_development_26$1 = reactIs_development$1.typeOf;
+
+var reactIs$1 = createCommonjsModule(function (module) {
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports = reactIs_production_min$1;
+} else {
+  module.exports = reactIs_development$1;
+}
+});
+var reactIs_1 = reactIs$1.isElement;
+var reactIs_2 = reactIs$1.isValidElementType;
+var reactIs_3 = reactIs$1.ForwardRef;
+var reactIs_4 = reactIs$1.Memo;
+
 // https://github.com/JamesMGreene/Function.name/blob/58b314d4a983110c3682f1228f845d39ccca1817/Function.name.js#L3
 
 var fnNameMatchRegex = /^\s*function(?:\s|\s*\/\*.*\*\/\s*)+([^(\s/]*)\s*/;
@@ -1476,10 +1772,19 @@ function _createClass(Constructor, protoProps, staticProps) {
   return Constructor;
 }
 
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return _setPrototypeOf(o, p);
+}
+
 function _inheritsLoose(subClass, superClass) {
   subClass.prototype = Object.create(superClass.prototype);
   subClass.prototype.constructor = subClass;
-  subClass.__proto__ = superClass;
+  _setPrototypeOf(subClass, superClass);
 }
 
 function _assertThisInitialized(self) {
@@ -1553,7 +1858,7 @@ var join = function join(value, by) {
   return result;
 };
 /**
- * Converts array values to string.
+ * Converts JSS array value to a CSS string.
  *
  * `margin: [['5px', '10px']]` > `margin: 5px 10px;`
  * `border: ['1px', '2px']` > `border: 1px, 2px;`
@@ -1562,7 +1867,7 @@ var join = function join(value, by) {
  */
 
 
-function toCssValue(value, ignoreImportant) {
+var toCssValue = function toCssValue(value, ignoreImportant) {
   if (ignoreImportant === void 0) {
     ignoreImportant = false;
   }
@@ -1584,12 +1889,27 @@ function toCssValue(value, ignoreImportant) {
   }
 
   return cssValue;
+};
+
+function getWhitespaceSymbols(options) {
+  if (options && options.format === false) {
+    return {
+      linebreak: '',
+      space: ''
+    };
+  }
+
+  return {
+    linebreak: '\n',
+    space: ' '
+  };
 }
 
 /**
  * Indent a string.
  * http://jsperf.com/array-join-vs-for
  */
+
 function indentStr(str, indent) {
   var result = '';
 
@@ -1615,6 +1935,15 @@ function toCss(selector, style, options) {
       _options$indent = _options.indent,
       indent = _options$indent === void 0 ? 0 : _options$indent;
   var fallbacks = style.fallbacks;
+
+  if (options.format === false) {
+    indent = -Infinity;
+  }
+
+  var _getWhitespaceSymbols = getWhitespaceSymbols(options),
+      linebreak = _getWhitespaceSymbols.linebreak,
+      space = _getWhitespaceSymbols.space;
+
   if (selector) indent++; // Apply fallbacks first.
 
   if (fallbacks) {
@@ -1627,8 +1956,8 @@ function toCss(selector, style, options) {
           var value = fallback[prop];
 
           if (value != null) {
-            if (result) result += '\n';
-            result += "" + indentStr(prop + ": " + toCssValue(value) + ";", indent);
+            if (result) result += linebreak;
+            result += indentStr(prop + ":" + space + toCssValue(value) + ";", indent);
           }
         }
       }
@@ -1638,8 +1967,8 @@ function toCss(selector, style, options) {
         var _value = fallbacks[_prop];
 
         if (_value != null) {
-          if (result) result += '\n';
-          result += "" + indentStr(_prop + ": " + toCssValue(_value) + ";", indent);
+          if (result) result += linebreak;
+          result += indentStr(_prop + ":" + space + toCssValue(_value) + ";", indent);
         }
       }
     }
@@ -1649,8 +1978,8 @@ function toCss(selector, style, options) {
     var _value2 = style[_prop2];
 
     if (_value2 != null && _prop2 !== 'fallbacks') {
-      if (result) result += '\n';
-      result += "" + indentStr(_prop2 + ": " + toCssValue(_value2) + ";", indent);
+      if (result) result += linebreak;
+      result += indentStr(_prop2 + ":" + space + toCssValue(_value2) + ";", indent);
     }
   } // Allow empty style in this case, because properties will be added dynamically.
 
@@ -1659,8 +1988,8 @@ function toCss(selector, style, options) {
 
   if (!selector) return result;
   indent--;
-  if (result) result = "\n" + result + "\n";
-  return indentStr(selector + " {" + result, indent) + indentStr('}', indent);
+  if (result) result = "" + linebreak + result + linebreak;
+  return indentStr("" + selector + space + "{" + result, indent) + indentStr('}', indent);
 }
 
 var escapeRegex = /([[\].#*$><+~=|^:(),"'`\s])/g;
@@ -1674,12 +2003,7 @@ var BaseStyleRule =
 function () {
   function BaseStyleRule(key, style, options) {
     this.type = 'style';
-    this.key = void 0;
     this.isProcessed = false;
-    this.style = void 0;
-    this.renderer = void 0;
-    this.renderable = void 0;
-    this.options = void 0;
     var sheet = options.sheet,
         Renderer = options.Renderer;
     this.key = key;
@@ -1739,9 +2063,6 @@ function (_BaseStyleRule) {
     var _this;
 
     _this = _BaseStyleRule.call(this, key, style, options) || this;
-    _this.selectorText = void 0;
-    _this.id = void 0;
-    _this.renderable = void 0;
     var selector = options.selector,
         scoped = options.scoped,
         sheet = options.sheet,
@@ -1838,12 +2159,12 @@ function (_BaseStyleRule) {
   return StyleRule;
 }(BaseStyleRule);
 var pluginStyleRule = {
-  onCreateRule: function onCreateRule(name, style, options) {
-    if (name[0] === '@' || options.parent && options.parent.type === 'keyframes') {
+  onCreateRule: function onCreateRule(key, style, options) {
+    if (key[0] === '@' || options.parent && options.parent.type === 'keyframes') {
       return null;
     }
 
-    return new StyleRule(name, style, options);
+    return new StyleRule(key, style, options);
   }
 };
 
@@ -1861,18 +2182,12 @@ var ConditionalRule =
 function () {
   function ConditionalRule(key, styles, options) {
     this.type = 'conditional';
-    this.at = void 0;
-    this.key = void 0;
-    this.query = void 0;
-    this.rules = void 0;
-    this.options = void 0;
     this.isProcessed = false;
-    this.renderable = void 0;
-    this.key = key; // Key might contain a unique suffix in case the `name` passed by user was duplicate.
-
-    this.query = options.name;
+    this.key = key;
     var atMatch = key.match(atRegExp);
-    this.at = atMatch ? atMatch[1] : 'unknown';
+    this.at = atMatch ? atMatch[1] : 'unknown'; // Key might contain a unique suffix in case the `name` passed by user was duplicate.
+
+    this.query = options.name || "@" + this.at;
     this.options = options;
     this.rules = new RuleList(_extends({}, options, {
       parent: this
@@ -1923,6 +2238,9 @@ function () {
       options = defaultToStringOptions;
     }
 
+    var _getWhitespaceSymbols = getWhitespaceSymbols(options),
+        linebreak = _getWhitespaceSymbols.linebreak;
+
     if (options.indent == null) options.indent = defaultToStringOptions.indent;
     if (options.children == null) options.children = defaultToStringOptions.children;
 
@@ -1931,7 +2249,7 @@ function () {
     }
 
     var children = this.rules.toString(options);
-    return children ? this.query + " {\n" + children + "\n}" : '';
+    return children ? this.query + " {" + linebreak + children + linebreak + "}" : '';
   };
 
   return ConditionalRule;
@@ -1958,13 +2276,7 @@ function () {
   function KeyframesRule(key, frames, options) {
     this.type = 'keyframes';
     this.at = '@keyframes';
-    this.key = void 0;
-    this.name = void 0;
-    this.id = void 0;
-    this.rules = void 0;
-    this.options = void 0;
     this.isProcessed = false;
-    this.renderable = void 0;
     var nameMatch = key.match(nameRegExp);
 
     if (nameMatch && nameMatch[1]) {
@@ -2004,6 +2316,9 @@ function () {
       options = defaultToStringOptions$1;
     }
 
+    var _getWhitespaceSymbols = getWhitespaceSymbols(options),
+        linebreak = _getWhitespaceSymbols.linebreak;
+
     if (options.indent == null) options.indent = defaultToStringOptions$1.indent;
     if (options.children == null) options.children = defaultToStringOptions$1.children;
 
@@ -2012,7 +2327,7 @@ function () {
     }
 
     var children = this.rules.toString(options);
-    if (children) children = "\n" + children + "\n";
+    if (children) children = "" + linebreak + children + linebreak;
     return this.at + " " + this.id + " {" + children + "}";
   };
 
@@ -2049,7 +2364,7 @@ var replaceRef = function replaceRef(style, prop, keyframes) {
   }
 };
 
-var plugin = {
+var pluginKeyframesRule = {
   onCreateRule: function onCreateRule(key, frames, options) {
     return typeof key === 'string' && keyRegExp$1.test(key) ? new KeyframesRule(key, frames, options) : null;
   },
@@ -2086,15 +2401,7 @@ function (_BaseStyleRule) {
   _inheritsLoose(KeyframeRule, _BaseStyleRule);
 
   function KeyframeRule() {
-    var _this;
-
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _BaseStyleRule.call.apply(_BaseStyleRule, [this].concat(args)) || this;
-    _this.renderable = void 0;
-    return _this;
+    return _BaseStyleRule.apply(this, arguments) || this;
   }
 
   var _proto = KeyframeRule.prototype;
@@ -2129,11 +2436,7 @@ function () {
   function FontFaceRule(key, style, options) {
     this.type = 'font-face';
     this.at = '@font-face';
-    this.key = void 0;
-    this.style = void 0;
-    this.options = void 0;
     this.isProcessed = false;
-    this.renderable = void 0;
     this.key = key;
     this.style = style;
     this.options = options;
@@ -2146,12 +2449,15 @@ function () {
   var _proto = FontFaceRule.prototype;
 
   _proto.toString = function toString(options) {
+    var _getWhitespaceSymbols = getWhitespaceSymbols(options),
+        linebreak = _getWhitespaceSymbols.linebreak;
+
     if (Array.isArray(this.style)) {
       var str = '';
 
       for (var index = 0; index < this.style.length; index++) {
         str += toCss(this.at, this.style[index]);
-        if (this.style[index + 1]) str += '\n';
+        if (this.style[index + 1]) str += linebreak;
       }
 
       return str;
@@ -2175,11 +2481,7 @@ function () {
   function ViewportRule(key, style, options) {
     this.type = 'viewport';
     this.at = '@viewport';
-    this.key = void 0;
-    this.style = void 0;
-    this.options = void 0;
     this.isProcessed = false;
-    this.renderable = void 0;
     this.key = key;
     this.style = style;
     this.options = options;
@@ -2208,11 +2510,7 @@ var SimpleRule =
 function () {
   function SimpleRule(key, value, options) {
     this.type = 'simple';
-    this.key = void 0;
-    this.value = void 0;
-    this.options = void 0;
     this.isProcessed = false;
-    this.renderable = void 0;
     this.key = key;
     this.value = value;
     this.options = options;
@@ -2253,7 +2551,7 @@ var pluginSimpleRule = {
   }
 };
 
-var plugins = [pluginStyleRule, pluginConditionalRule, plugin, pluginKeyframeRule, pluginFontFaceRule, pluginViewportRule, pluginSimpleRule];
+var plugins = [pluginStyleRule, pluginConditionalRule, pluginKeyframesRule, pluginKeyframeRule, pluginFontFaceRule, pluginViewportRule, pluginSimpleRule];
 
 var defaultUpdateOptions = {
   process: true
@@ -2280,9 +2578,6 @@ function () {
     this.raw = {};
     this.index = [];
     this.counter = 0;
-    this.options = void 0;
-    this.classes = void 0;
-    this.keyframes = void 0;
     this.options = options;
     this.classes = options.classes;
     this.keyframes = options.keyframes;
@@ -2421,14 +2716,11 @@ function () {
     var options;
 
     if (typeof (arguments.length <= 0 ? undefined : arguments[0]) === 'string') {
-      name = arguments.length <= 0 ? undefined : arguments[0]; // $FlowFixMe
-
-      data = arguments.length <= 1 ? undefined : arguments[1]; // $FlowFixMe
-
+      name = arguments.length <= 0 ? undefined : arguments[0];
+      data = arguments.length <= 1 ? undefined : arguments[1];
       options = arguments.length <= 2 ? undefined : arguments[2];
     } else {
-      data = arguments.length <= 0 ? undefined : arguments[0]; // $FlowFixMe
-
+      data = arguments.length <= 0 ? undefined : arguments[0];
       options = arguments.length <= 1 ? undefined : arguments[1];
       name = null;
     }
@@ -2460,32 +2752,31 @@ function () {
       return;
     }
 
-    var styleRule = rule;
-    var style = styleRule.style;
+    var style = rule.style;
     plugins.onUpdate(data, rule, sheet, options); // We rely on a new `style` ref in case it was mutated during onUpdate hook.
 
-    if (options.process && style && style !== styleRule.style) {
+    if (options.process && style && style !== rule.style) {
       // We need to run the plugins in case new `style` relies on syntax plugins.
-      plugins.onProcessStyle(styleRule.style, styleRule, sheet); // Update and add props.
+      plugins.onProcessStyle(rule.style, rule, sheet); // Update and add props.
 
-      for (var prop in styleRule.style) {
-        var nextValue = styleRule.style[prop];
+      for (var prop in rule.style) {
+        var nextValue = rule.style[prop];
         var prevValue = style[prop]; // We need to use `force: true` because `rule.style` has been updated during onUpdate hook, so `rule.prop()` will not update the CSSOM rule.
         // We do this comparison to avoid unneeded `rule.prop()` calls, since we have the old `style` object here.
 
         if (nextValue !== prevValue) {
-          styleRule.prop(prop, nextValue, forceUpdateOptions);
+          rule.prop(prop, nextValue, forceUpdateOptions);
         }
       } // Remove props.
 
 
       for (var _prop in style) {
-        var _nextValue = styleRule.style[_prop];
+        var _nextValue = rule.style[_prop];
         var _prevValue = style[_prop]; // We need to use `force: true` because `rule.style` has been updated during onUpdate hook, so `rule.prop()` will not update the CSSOM rule.
         // We do this comparison to avoid unneeded `rule.prop()` calls, since we have the old `style` object here.
 
         if (_nextValue == null && _nextValue !== _prevValue) {
-          styleRule.prop(_prop, null, forceUpdateOptions);
+          rule.prop(_prop, null, forceUpdateOptions);
         }
       }
     }
@@ -2500,12 +2791,15 @@ function () {
     var sheet = this.options.sheet;
     var link = sheet ? sheet.options.link : false;
 
+    var _getWhitespaceSymbols = getWhitespaceSymbols(options),
+        linebreak = _getWhitespaceSymbols.linebreak;
+
     for (var index = 0; index < this.index.length; index++) {
       var rule = this.index[index];
       var css = rule.toString(options); // No need to render an empty rule.
 
       if (!css && !link) continue;
-      if (str) str += '\n';
+      if (str) str += linebreak;
       str += css;
     }
 
@@ -2519,14 +2813,6 @@ var StyleSheet =
 /*#__PURE__*/
 function () {
   function StyleSheet(styles, options) {
-    this.options = void 0;
-    this.deployed = void 0;
-    this.attached = void 0;
-    this.rules = void 0;
-    this.renderer = void 0;
-    this.classes = void 0;
-    this.keyframes = void 0;
-    this.queue = void 0;
     this.attached = false;
     this.deployed = false;
     this.classes = {};
@@ -2654,7 +2940,13 @@ function () {
 
   _proto.deleteRule = function deleteRule(name) {
     var rule = typeof name === 'object' ? name : this.rules.get(name);
-    if (!rule) return false;
+
+    if (!rule || // Style sheet was created without link: true and attached, in this case we
+    // won't be able to remove the CSS rule from the DOM.
+    this.attached && !rule.renderable) {
+      return false;
+    }
+
     this.rules.remove(rule);
 
     if (this.attached && rule.renderable && this.renderer) {
@@ -2722,7 +3014,7 @@ function () {
       internal: [],
       external: []
     };
-    this.registry = void 0;
+    this.registry = {};
   }
 
   var _proto = PluginsRegistry.prototype;
@@ -2761,7 +3053,6 @@ function () {
 
   _proto.onProcessStyle = function onProcessStyle(style, rule, sheet) {
     for (var i = 0; i < this.registry.onProcessStyle.length; i++) {
-      // $FlowFixMe
       rule.style = this.registry.onProcessStyle[i](rule.style, rule, sheet);
     }
   }
@@ -2842,8 +3133,9 @@ function () {
 }();
 
 /**
- * Sheets registry to access them all at one place.
+ * Sheets registry to access all instances in one place.
  */
+
 var SheetsRegistry =
 /*#__PURE__*/
 function () {
@@ -2901,6 +3193,9 @@ function () {
         attached = _ref.attached,
         options = _objectWithoutPropertiesLoose(_ref, ["attached"]);
 
+    var _getWhitespaceSymbols = getWhitespaceSymbols(options),
+        linebreak = _getWhitespaceSymbols.linebreak;
+
     var css = '';
 
     for (var i = 0; i < this.registry.length; i++) {
@@ -2910,7 +3205,7 @@ function () {
         continue;
       }
 
-      if (css) css += '\n';
+      if (css) css += linebreak;
       css += sheet.toString(options);
     }
 
@@ -2941,31 +3236,42 @@ function () {
 var sheets = new SheetsRegistry();
 
 /* eslint-disable */
-// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
-var globalThis = typeof window != 'undefined' && window.Math == Math ? window : typeof self != 'undefined' && self.Math == Math ? self : Function('return this')();
+
+/**
+ * Now that `globalThis` is available on most platforms
+ * (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/globalThis#browser_compatibility)
+ * we check for `globalThis` first. `globalThis` is necessary for jss
+ * to run in Agoric's secure version of JavaScript (SES). Under SES,
+ * `globalThis` exists, but `window`, `self`, and `Function('return
+ * this')()` are all undefined for security reasons.
+ *
+ * https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
+ */
+var globalThis$1 = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' && window.Math === Math ? window : typeof self !== 'undefined' && self.Math === Math ? self : Function('return this')();
 
 var ns = '2f1acc6c3a606b082e5eef5e54414ffb';
-if (globalThis[ns] == null) globalThis[ns] = 0; // Bundle may contain multiple JSS versions at the same time. In order to identify
+if (globalThis$1[ns] == null) globalThis$1[ns] = 0; // Bundle may contain multiple JSS versions at the same time. In order to identify
 // the current version with just one short number and use it for classes generation
 // we use a counter. Also it is more accurate, because user can manually reevaluate
 // the module.
 
-var moduleId = globalThis[ns]++;
+var moduleId = globalThis$1[ns]++;
 
 var maxRules = 1e10;
-
 /**
  * Returns a function which generates unique class names based on counters.
  * When new generator function is created, rule counter is reseted.
  * We need to reset the rule counter for SSR for each request.
  */
+
 var createGenerateId = function createGenerateId(options) {
   if (options === void 0) {
     options = {};
   }
 
   var ruleCounter = 0;
-  return function (rule, sheet) {
+
+  var generateId = function generateId(rule, sheet) {
     ruleCounter += 1;
 
     if (ruleCounter > maxRules) {
@@ -2992,11 +3298,14 @@ var createGenerateId = function createGenerateId(options) {
 
     return prefix + rule.key + "-" + moduleId + (jssId ? "-" + jssId : '') + "-" + ruleCounter;
   };
+
+  return generateId;
 };
 
 /**
  * Cache the value from the first time a function is called.
  */
+
 var memoize = function memoize(fn) {
   var value;
   return function () {
@@ -3009,7 +3318,7 @@ var memoize = function memoize(fn) {
  */
 
 
-function getPropertyValue(cssRule, prop) {
+var getPropertyValue = function getPropertyValue(cssRule, prop) {
   try {
     // Support CSSTOM.
     if (cssRule.attributeStyleMap) {
@@ -3021,13 +3330,13 @@ function getPropertyValue(cssRule, prop) {
     // IE may throw if property is unknown.
     return '';
   }
-}
+};
 /**
  * Set a style property.
  */
 
 
-function setProperty(cssRule, prop, value) {
+var setProperty = function setProperty(cssRule, prop, value) {
   try {
     var cssValue = value;
 
@@ -3052,13 +3361,13 @@ function setProperty(cssRule, prop, value) {
   }
 
   return true;
-}
+};
 /**
  * Remove a style property.
  */
 
 
-function removeProperty(cssRule, prop) {
+var removeProperty = function removeProperty(cssRule, prop) {
   try {
     // Support CSSTOM.
     if (cssRule.attributeStyleMap) {
@@ -3069,18 +3378,18 @@ function removeProperty(cssRule, prop) {
   } catch (err) {
     process.env.NODE_ENV !== "production" ? warning(false, "[JSS] DOMException \"" + err.message + "\" was thrown. Tried to remove property \"" + prop + "\".") : void 0;
   }
-}
+};
 /**
  * Set the selector.
  */
 
 
-function setSelector(cssRule, selectorText) {
+var setSelector = function setSelector(cssRule, selectorText) {
   cssRule.selectorText = selectorText; // Return false if setter was not successful.
   // Currently works in chrome only.
 
   return cssRule.selectorText === selectorText;
-}
+};
 /**
  * Gets the `head` element upon the first call and caches it.
  * We assume it can't be null.
@@ -3139,10 +3448,11 @@ function findCommentNode(text) {
 
   return null;
 }
-
 /**
  * Find a node before which we can insert the sheet.
  */
+
+
 function findPrevNode(options) {
   var registry = sheets.registry;
 
@@ -3204,7 +3514,6 @@ function insertStyle(style, options) {
 
 
   if (insertionPoint && typeof insertionPoint.nodeType === 'number') {
-    // https://stackoverflow.com/questions/41328728/force-casting-in-flow
     var insertionPointElement = insertionPoint;
     var parentNode = insertionPointElement.parentNode;
     if (parentNode) parentNode.insertBefore(style, insertionPointElement.nextSibling);else process.env.NODE_ENV !== "production" ? warning(false, '[JSS] Insertion point is not in the DOM.') : void 0;
@@ -3224,22 +3533,12 @@ var getNonce = memoize(function () {
 });
 
 var _insertRule = function insertRule(container, rule, index) {
-  var maxIndex = container.cssRules.length; // In case previous insertion fails, passed index might be wrong
-
-  if (index === undefined || index > maxIndex) {
-    // eslint-disable-next-line no-param-reassign
-    index = maxIndex;
-  }
-
   try {
     if ('insertRule' in container) {
-      var c = container;
-      c.insertRule(rule, index);
+      container.insertRule(rule, index);
     } // Keyframes rule.
     else if ('appendRule' in container) {
-        var _c = container;
-
-        _c.appendRule(rule);
+        container.appendRule(rule);
       }
   } catch (err) {
     process.env.NODE_ENV !== "production" ? warning(false, "[JSS] " + err.message) : void 0;
@@ -3247,6 +3546,17 @@ var _insertRule = function insertRule(container, rule, index) {
   }
 
   return container.cssRules[index];
+};
+
+var getValidRuleInsertionIndex = function getValidRuleInsertionIndex(container, index) {
+  var maxIndex = container.cssRules.length; // In case previous insertion fails, passed index might be wrong
+
+  if (index === undefined || index > maxIndex) {
+    // eslint-disable-next-line no-param-reassign
+    return maxIndex;
+  }
+
+  return index;
 };
 
 var createStyle = function createStyle() {
@@ -3261,15 +3571,15 @@ var createStyle = function createStyle() {
 var DomRenderer =
 /*#__PURE__*/
 function () {
-  // HTMLStyleElement needs fixing https://github.com/facebook/flow/issues/2696
+  // Will be empty if link: true option is not set, because
+  // it is only for use together with insertRule API.
   function DomRenderer(sheet) {
     this.getPropertyValue = getPropertyValue;
     this.setProperty = setProperty;
     this.removeProperty = removeProperty;
     this.setSelector = setSelector;
-    this.element = void 0;
-    this.sheet = void 0;
     this.hasInsertedRules = false;
+    this.cssRules = [];
     // There is no sheet when the renderer is used from a standalone StyleRule.
     if (sheet) sheets.add(sheet);
     this.sheet = sheet;
@@ -3312,8 +3622,15 @@ function () {
   ;
 
   _proto.detach = function detach() {
+    if (!this.sheet) return;
     var parentNode = this.element.parentNode;
-    if (parentNode) parentNode.removeChild(this.element);
+    if (parentNode) parentNode.removeChild(this.element); // In the most browsers, rules inserted using insertRule() API will be lost when style element is removed.
+    // Though IE will keep them and we need a consistent behavior.
+
+    if (this.sheet.options.link) {
+      this.cssRules = [];
+      this.element.textContent = '\n';
+    }
   }
   /**
    * Inject CSS string into element.
@@ -3356,39 +3673,46 @@ function () {
       var latestNativeParent = nativeParent;
 
       if (rule.type === 'conditional' || rule.type === 'keyframes') {
-        // We need to render the container without children first.
+        var _insertionIndex = getValidRuleInsertionIndex(nativeParent, index); // We need to render the container without children first.
+
+
         latestNativeParent = _insertRule(nativeParent, parent.toString({
           children: false
-        }), index);
+        }), _insertionIndex);
 
         if (latestNativeParent === false) {
           return false;
         }
+
+        this.refCssRule(rule, _insertionIndex, latestNativeParent);
       }
 
       this.insertRules(parent.rules, latestNativeParent);
       return latestNativeParent;
-    } // IE keeps the CSSStyleSheet after style node has been reattached,
-    // so we need to check if the `renderable` reference the right style sheet and not
-    // rerender those rules.
-
-
-    if (rule.renderable && rule.renderable.parentStyleSheet === this.element.sheet) {
-      return rule.renderable;
     }
 
     var ruleStr = rule.toString();
     if (!ruleStr) return false;
+    var insertionIndex = getValidRuleInsertionIndex(nativeParent, index);
 
-    var nativeRule = _insertRule(nativeParent, ruleStr, index);
+    var nativeRule = _insertRule(nativeParent, ruleStr, insertionIndex);
 
     if (nativeRule === false) {
       return false;
     }
 
     this.hasInsertedRules = true;
-    rule.renderable = nativeRule;
+    this.refCssRule(rule, insertionIndex, nativeRule);
     return nativeRule;
+  };
+
+  _proto.refCssRule = function refCssRule(rule, index, cssRule) {
+    rule.renderable = cssRule; // We only want to reference the top level rules, deleteRule API doesn't support removing nested rules
+    // like rules inside media queries or keyframes
+
+    if (rule.options.parent instanceof StyleSheet) {
+      this.cssRules[index] = cssRule;
+    }
   }
   /**
    * Delete a rule.
@@ -3400,6 +3724,7 @@ function () {
     var index = this.indexOf(cssRule);
     if (index === -1) return false;
     sheet.deleteRule(index);
+    this.cssRules.splice(index, 1);
     return true;
   }
   /**
@@ -3408,13 +3733,7 @@ function () {
   ;
 
   _proto.indexOf = function indexOf(cssRule) {
-    var cssRules = this.element.sheet.cssRules;
-
-    for (var index = 0; index < cssRules.length; index++) {
-      if (cssRule === cssRules[index]) return index;
-    }
-
-    return -1;
+    return this.cssRules.indexOf(cssRule);
   }
   /**
    * Generate a new CSS rule and replace the existing one.
@@ -3427,6 +3746,7 @@ function () {
     var index = this.indexOf(cssRule);
     if (index === -1) return false;
     this.element.sheet.deleteRule(index);
+    this.cssRules.splice(index, 1);
     return this.insertRule(rule, index);
   }
   /**
@@ -3448,7 +3768,7 @@ var Jss =
 function () {
   function Jss(options) {
     this.id = instanceCounter++;
-    this.version = "10.4.0";
+    this.version = "10.8.2";
     this.plugins = new PluginsRegistry();
     this.options = {
       id: {
@@ -3560,10 +3880,8 @@ function () {
 
     // Enable rule without name for inline styles.
     if (typeof name === 'object') {
-      // $FlowIgnore
       return this.createRule(undefined, name, style);
-    } // $FlowIgnore
-
+    }
 
     var ruleOptions = _extends({}, options, {
       name: name,
@@ -3601,6 +3919,16 @@ function () {
   return Jss;
 }();
 
+var createJss = function createJss(options) {
+  return new Jss(options);
+};
+
+/**
+* Export a constant indicating if this browser has CSSTOM support.
+* https://developers.google.com/web/updates/2018/03/cssom
+*/
+var hasCSSTOMSupport = typeof CSS === 'object' && CSS != null && 'number' in CSS;
+
 /**
  * Extracts a styles object with only props that contain function values.
  */
@@ -3634,29 +3962,13 @@ function getDynamicStyles(styles) {
  * @website https://github.com/cssinjs/jss
  * @license MIT
  */
-
-/**
- * Export a constant indicating if this browser has CSSTOM support.
- * https://developers.google.com/web/updates/2018/03/cssom
- */
-var hasCSSTOMSupport = typeof CSS !== 'undefined' && CSS && 'number' in CSS;
-/**
- * Creates a new instance of Jss.
- */
-
-var create = function create(options) {
-  return new Jss(options);
-};
-/**
- * A global Jss instance.
- */
-
-var index = create();
+var index = createJss();
 
 var now = Date.now();
 var fnValuesNs = "fnValues" + now;
 var fnRuleNs = "fnStyle" + ++now;
-function functionPlugin() {
+
+var functionPlugin = function functionPlugin() {
   return {
     onCreateRule: function onCreateRule(name, decl, options) {
       if (typeof decl !== 'function') return null;
@@ -3677,8 +3989,7 @@ function functionPlugin() {
         if (typeof value !== 'function') continue;
         delete style[prop];
         fnValues[prop] = value;
-      } // $FlowFixMe
-
+      }
 
       rule[fnValuesNs] = fnValues;
       return style;
@@ -3712,7 +4023,7 @@ function functionPlugin() {
       }
     }
   };
-}
+};
 
 var at = '@global';
 var atPrefix = '@global ';
@@ -3723,9 +4034,6 @@ function () {
   function GlobalContainerRule(key, styles, options) {
     this.type = 'global';
     this.at = at;
-    this.rules = void 0;
-    this.options = void 0;
-    this.key = void 0;
     this.isProcessed = false;
     this.key = key;
     this.options = options;
@@ -3756,7 +4064,7 @@ function () {
 
   _proto.addRule = function addRule(name, style, options) {
     var rule = this.rules.add(name, style, options);
-    this.options.jss.plugins.onProcessRule(rule);
+    if (rule) this.options.jss.plugins.onProcessRule(rule);
     return rule;
   }
   /**
@@ -3785,10 +4093,7 @@ function () {
   function GlobalPrefixedRule(key, style, options) {
     this.type = 'global';
     this.at = at;
-    this.options = void 0;
-    this.rule = void 0;
     this.isProcessed = false;
-    this.key = void 0;
     this.key = key;
     this.options = options;
     var selector = key.substr(atPrefix.length);
@@ -3820,14 +4125,14 @@ function addScope(selector, scope) {
   return scoped;
 }
 
-function handleNestedGlobalContainerRule(rule) {
+function handleNestedGlobalContainerRule(rule, sheet) {
   var options = rule.options,
       style = rule.style;
   var rules = style ? style[at] : null;
   if (!rules) return;
 
   for (var name in rules) {
-    options.sheet.addRule(name, rules[name], _extends({}, options, {
+    sheet.addRule(name, rules[name], _extends({}, options, {
       selector: addScope(name, rule.selector)
     }));
   }
@@ -3835,14 +4140,14 @@ function handleNestedGlobalContainerRule(rule) {
   delete style[at];
 }
 
-function handlePrefixedGlobalRule(rule) {
+function handlePrefixedGlobalRule(rule, sheet) {
   var options = rule.options,
       style = rule.style;
 
   for (var prop in style) {
     if (prop[0] !== '@' || prop.substr(0, at.length) !== at) continue;
     var selector = addScope(prop.substr(at.length), rule.selector);
-    options.sheet.addRule(selector, style[prop], _extends({}, options, {
+    sheet.addRule(selector, style[prop], _extends({}, options, {
       selector: selector
     }));
     delete style[prop];
@@ -3850,9 +4155,6 @@ function handlePrefixedGlobalRule(rule) {
 }
 /**
  * Convert nested rules to separate, remove them from original styles.
- *
- * @param {Rule} rule
- * @api public
  */
 
 
@@ -3883,10 +4185,10 @@ function jssGlobal() {
     return null;
   }
 
-  function onProcessRule(rule) {
-    if (rule.type !== 'style') return;
-    handleNestedGlobalContainerRule(rule);
-    handlePrefixedGlobalRule(rule);
+  function onProcessRule(rule, sheet) {
+    if (rule.type !== 'style' || !sheet) return;
+    handleNestedGlobalContainerRule(rule, sheet);
+    handlePrefixedGlobalRule(rule, sheet);
   }
 
   return {
@@ -3900,9 +4202,6 @@ var parentRegExp = /&/g;
 var refRegExp$1 = /\$([\w-]+)/g;
 /**
  * Convert nested rules to separate, remove them from original styles.
- *
- * @param {Rule} rule
- * @api public
  */
 
 function jssNested() {
@@ -3912,7 +4211,6 @@ function jssNested() {
       var rule = container.getRule(key) || sheet && sheet.getRule(key);
 
       if (rule) {
-        rule = rule;
         return rule.selector;
       }
 
@@ -3983,10 +4281,7 @@ function jssNested() {
         }));
       } else if (isNestedConditional) {
         // Place conditional right after the parent rule to ensure right ordering.
-        container.addRule(prop, {}, options) // Flow expects more options but they aren't required
-        // And flow doesn't know this will always be a StyleRule which has the addRule method
-        // $FlowFixMe
-        .addRule(styleRule.key, style[prop], {
+        container.addRule(prop, {}, options).addRule(styleRule.key, style[prop], {
           selector: styleRule.selector
         });
       }
@@ -4022,9 +4317,6 @@ function hyphenateStyleName(name) {
 
 /**
  * Convert camel cased property names to dash separated.
- *
- * @param {Object} style
- * @return {Object}
  */
 
 function convertCase(style) {
@@ -4043,8 +4335,6 @@ function convertCase(style) {
 }
 /**
  * Allow camel cased property names by converting them back to dasherized.
- *
- * @param {Rule} rule
  */
 
 
@@ -4086,8 +4376,6 @@ var ms = hasCSSTOMSupport && CSS ? CSS.ms : 'ms';
 var percent = hasCSSTOMSupport && CSS ? CSS.percent : '%';
 /**
  * Generated jss-plugin-default-unit CSS property units
- *
- * @type object
  */
 
 var defaultUnits = {
@@ -4115,18 +4403,46 @@ var defaultUnits = {
   'border-top-right-radius': px,
   'border-top-width': px,
   'border-width': px,
+  'border-block': px,
+  'border-block-end': px,
+  'border-block-end-width': px,
+  'border-block-start': px,
+  'border-block-start-width': px,
+  'border-block-width': px,
+  'border-inline': px,
+  'border-inline-end': px,
+  'border-inline-end-width': px,
+  'border-inline-start': px,
+  'border-inline-start-width': px,
+  'border-inline-width': px,
+  'border-start-start-radius': px,
+  'border-start-end-radius': px,
+  'border-end-start-radius': px,
+  'border-end-end-radius': px,
   // Margin properties
   margin: px,
   'margin-bottom': px,
   'margin-left': px,
   'margin-right': px,
   'margin-top': px,
+  'margin-block': px,
+  'margin-block-end': px,
+  'margin-block-start': px,
+  'margin-inline': px,
+  'margin-inline-end': px,
+  'margin-inline-start': px,
   // Padding properties
   padding: px,
   'padding-bottom': px,
   'padding-left': px,
   'padding-right': px,
   'padding-top': px,
+  'padding-block': px,
+  'padding-block-end': px,
+  'padding-block-start': px,
+  'padding-inline': px,
+  'padding-inline-end': px,
+  'padding-inline-start': px,
   // Mask properties
   'mask-position-x': px,
   'mask-position-y': px,
@@ -4143,6 +4459,13 @@ var defaultUnits = {
   left: px,
   top: px,
   right: px,
+  inset: px,
+  'inset-block': px,
+  'inset-block-end': px,
+  'inset-block-start': px,
+  'inset-inline': px,
+  'inset-inline-end': px,
+  'inset-inline-start': px,
   // Shadow properties
   'box-shadow': px,
   'text-shadow': px,
@@ -4155,6 +4478,7 @@ var defaultUnits = {
   'font-size': px,
   'font-size-delta': px,
   'letter-spacing': px,
+  'text-decoration-thickness': px,
   'text-indent': px,
   'text-stroke': px,
   'text-stroke-width': px,
@@ -4184,9 +4508,11 @@ var defaultUnits = {
   // Some random properties
   'shape-margin': px,
   size: px,
+  gap: px,
   // Grid properties
   grid: px,
   'grid-gap': px,
+  'row-gap': px,
   'grid-row-gap': px,
   'grid-column-gap': px,
   'grid-template-rows': px,
@@ -4208,6 +4534,7 @@ var defaultUnits = {
 /**
  * Clones the object and adds a camel cased property version.
  */
+
 function addCamelCasedVersion(obj) {
   var regExp = /(-[a-z])/g;
 
@@ -4217,9 +4544,9 @@ function addCamelCasedVersion(obj) {
 
   var newObj = {};
 
-  for (var _key in obj) {
-    newObj[_key] = obj[_key];
-    newObj[_key.replace(regExp, replace)] = obj[_key];
+  for (var key in obj) {
+    newObj[key] = obj[key];
+    newObj[key.replace(regExp, replace)] = obj[key];
   }
 
   return newObj;
@@ -4231,7 +4558,7 @@ var units = addCamelCasedVersion(defaultUnits);
  */
 
 function iterate(prop, value, options) {
-  if (!value) return value;
+  if (value == null) return value;
 
   if (Array.isArray(value)) {
     for (var i = 0; i < value.length; i++) {
@@ -4246,11 +4573,12 @@ function iterate(prop, value, options) {
       for (var _innerProp in value) {
         value[_innerProp] = iterate(prop + "-" + _innerProp, value[_innerProp], options);
       }
-    }
-  } else if (typeof value === 'number') {
-    var unit = options[prop] || units[prop];
+    } // eslint-disable-next-line no-restricted-globals
 
-    if (unit) {
+  } else if (typeof value === 'number' && isNaN(value) === false) {
+    var unit = options[prop] || units[prop]; // Add the unit if available, except for the special case of 0px.
+
+    if (unit && !(value === 0 && unit === px)) {
       return typeof unit === 'function' ? unit(value).toString() : "" + value + unit;
     }
 
@@ -4306,7 +4634,7 @@ function _arrayWithoutHoles(arr) {
 }
 
 function _iterableToArray(iter) {
-  if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);
+  if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
 }
 
 function _unsupportedIterableToArray(o, minLen) {
@@ -4897,8 +5225,6 @@ function supportedValue(property, value) {
 
 /**
  * Add vendor prefix to a property name when needed.
- *
- * @api public
  */
 
 function jssVendorPrefixer() {
@@ -5081,7 +5407,7 @@ function useTheme() {
   return theme;
 }
 
-var jss = create(jssPreset()); // Use a singleton or the provided one by the context.
+var jss = createJss(jssPreset()); // Use a singleton or the provided one by the context.
 //
 // The counter-based approach doesn't tolerate any mistake.
 // It's much safer to use the same counter everywhere.
@@ -5114,7 +5440,7 @@ function StylesProvider(props) {
 
   var outerOptions = React__default.useContext(StylesContext);
 
-  var context = _extends(_extends({}, outerOptions), {}, {
+  var context = _extends({}, outerOptions, {
     disableGeneration: disableGeneration
   }, localOptions);
 
@@ -5143,7 +5469,7 @@ function StylesProvider(props) {
       head.insertBefore(injectFirstNode, head.firstChild);
     }
 
-    context.jss = create({
+    context.jss = createJss({
       plugins: jssPreset().plugins,
       insertionPoint: injectFirstNode
     });
@@ -5360,7 +5686,7 @@ function attach(_ref2, props) {
     multiKeyStore.set(stylesOptions.sheetsManager, stylesCreator, theme, sheetManager);
   }
 
-  var options = _extends(_extends(_extends({}, stylesCreator.options), stylesOptions), {}, {
+  var options = _extends({}, stylesCreator.options, stylesOptions, {
     theme: theme,
     flip: typeof stylesOptions.flip === 'boolean' ? stylesOptions.flip : theme.direction === 'rtl'
   });
@@ -5505,7 +5831,7 @@ function makeStyles(stylesOrCreator) {
     var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
     var theme = useTheme() || defaultTheme;
 
-    var stylesOptions = _extends(_extends({}, React__default.useContext(StylesContext)), stylesOptions2);
+    var stylesOptions = _extends({}, React__default.useContext(StylesContext), stylesOptions2);
 
     var instance = React__default.useRef();
     var shouldUpdate = React__default.useRef();
@@ -5662,8 +5988,8 @@ var GoogleUtils = {
 
 var GoogleLocationSuggest = function (props) {
     var classes = useStyles();
-    var fieldProps = props.fieldProps, formikProps = props.formikProps, fieldConfig = props.fieldConfig;
-    var _a = React.useState(""), input = _a[0], setInput = _a[1];
+    var fieldProps = props.fieldProps, formikProps = props.formikProps, fieldConfig = props.fieldConfig, isReadOnly = props.isReadOnly;
+    var _a = React.useState(''), input = _a[0], setInput = _a[1];
     var _b = React.useState([]), result = _b[0], setResult = _b[1];
     var _c = React.useState(false), open = _c[0], setOpen = _c[1];
     var handleInputChange = function (e) {
@@ -5676,7 +6002,7 @@ var GoogleLocationSuggest = function (props) {
     var clearInput = function () {
         if (open)
             setOpen(false);
-        setInput("");
+        setInput('');
         setResult([]);
     };
     var getSuggestions = function () { return __awaiter(void 0, void 0, void 0, function () {
@@ -5722,19 +6048,29 @@ var GoogleLocationSuggest = function (props) {
             }
         });
     }); };
+    var getValue = function (value) {
+        if (!value)
+            return 'NA';
+        if (typeof value === typeof '')
+            return value;
+        if (Object.keys(value).length)
+            return value.description;
+        return 'NA';
+    };
+    if (isReadOnly) {
+        return React__default.createElement(reactForms.MUIReadOnly, { label: undefined, value: getValue(value) });
+    }
     return (React__default.createElement(React__default.Fragment, null,
-        React__default.createElement(Autocomplete, { getOptionLabel: function (option) { return option.description || ""; }, classes: { popper: classes.popper }, filterOptions: function (x) { return x; }, options: result, includeInputInList: true, fullWidth: textFieldProps.fullWidth, autoComplete: true, open: open && input.length > 0, forcePopupIcon: false, disableClearable: !value, getOptionSelected: function (option, value) {
-                return option.description === value.description;
-            }, value: value || null, renderInput: function (params) { return (React__default.createElement(core.TextField, __assign({}, params, { onChange: handleInputChange, value: input || "", 
+        React__default.createElement(Autocomplete, { getOptionLabel: function (option) { return option.description || ''; }, classes: { popper: classes.popper }, filterOptions: function (x) { return x; }, options: result, includeInputInList: true, fullWidth: textFieldProps.fullWidth, autoComplete: true, open: open && input.length > 0, forcePopupIcon: false, disableClearable: !value, getOptionSelected: function (option, value) { return option.description === value.description; }, value: value || null, renderInput: function (params) { return (React__default.createElement(core.TextField, __assign({}, params, { onChange: handleInputChange, value: input || '', 
                 // inputProps={{
                 //     ...params.inputProps,
                 //     // ...inputProps
                 // }}
-                InputProps: __assign(__assign({ endAdornment: (React__default.createElement(core.InputAdornment, { position: "end" },
+                InputProps: __assign(__assign({ endAdornment: (React__default.createElement(core.InputAdornment, { position: 'end' },
                         React__default.createElement(core.IconButton, { onClick: clearInput },
-                            React__default.createElement(Clear, { fontSize: "small", className: classes.endIcon })))), startAdornment: (React__default.createElement(core.InputAdornment, { position: "start" },
+                            React__default.createElement(Clear, { fontSize: "small", className: classes.endIcon })))), startAdornment: (React__default.createElement(core.InputAdornment, { position: 'start' },
                         React__default.createElement(core.IconButton, { disableRipple: true, disableFocusRipple: true, disableTouchRipple: true },
-                            React__default.createElement(SearchIcon, { fontSize: "small" })))) }, params.InputProps), textFieldProps.InputProps), placeholder: "Search on google", variant: "standard" }, textFieldProps))); }, renderOption: function (item) { return (React__default.createElement(core.ListItemText, { onClick: function () { return handleResultClick(item); } }, item.description)); } })));
+                            React__default.createElement(SearchIcon, { fontSize: "small" })))) }, params.InputProps), textFieldProps.InputProps), placeholder: "Search on google", variant: "standard" }, textFieldProps))); }, renderOption: function (item) { return React__default.createElement(core.ListItemText, { onClick: function () { return handleResultClick(item); } }, item.description); } })));
 };
 var useStyles = makeStyles(function () {
     return styles.createStyles({
@@ -5742,7 +6078,7 @@ var useStyles = makeStyles(function () {
         // zIndex: theme.zIndex.modal + 1
         },
         endIcon: {
-            cursor: "pointer",
+            cursor: 'pointer',
         },
     });
 });
