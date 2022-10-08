@@ -500,9 +500,9 @@ react-fast-compare@^2.0.1:
   resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-2.0.4.tgz#e84b4d455b0fec113e0402c329352715196f81f9"
   integrity sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==
 
-"react-forms@git+https://github.com/mithyalabs/react-forms.git":
+"react-forms@git+https://github.com/mithya-team/react-forms.git":
   version "1.0.3"
-  resolved "git+https://github.com/mithyalabs/react-forms.git#227520c1b30c27bfce42954ef527e7ba053f06fa"
+  resolved "git+https://github.com/mithya-team/react-forms.git#3b3e3d764899f40b8bd8715f07c392fb2b20d40b"
   dependencies:
     clsx "^1.1.1"
 

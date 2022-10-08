@@ -16,7 +16,7 @@
     "@material-ui/lab": "^4.0.0-alpha.40",
     "@material-ui/icons": "^4.9.1",
     "@types/googlemaps": "^3.39.6",
-    "react-forms": "git+https://github.com/mithyalabs/react-forms.git"
+    "react-forms": "git+https://github.com/mithya-team/react-forms.git"
   },
   "devDependencies": {
     "@date-io/core": "^2.10.6",
@@ -29,7 +29,7 @@
     "@types/react-dom": "^16.9.4",
     "formik": "^2.1.1",
     "react": "^16.12.0",
-    "react-forms": "git+https://github.com/mithyalabs/react-forms.git",
+    "react-forms": "git+https://github.com/mithya-team/react-forms.git",
     "rollup": "^1.27.14",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
